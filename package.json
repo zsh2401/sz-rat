@@ -1,7 +1,7 @@
 {
-  "name": "zsh-rat",
+  "name": "sz-rat",
   "version": "1.0.0",
-  "description": "Zsh's React Application template",
+  "description": "Seymour Zhang's React Application template",
   "main": "src/App.ts",
   "scripts": {
     "build": "webpack --mode production",
