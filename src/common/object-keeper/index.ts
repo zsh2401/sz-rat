@@ -9,5 +9,5 @@ function get<TResult = any>(key:string):TResult{
     return (window as any)[generateKey(key)] as TResult
 }
 function generateKey(srcKey:string):string{
-    return "OBJ_KEEPER_" + srcKey;
+    return "__OBJ_KEEPER_" + srcKey;
 }
