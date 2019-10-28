@@ -21,7 +21,7 @@ const config:webpack.Configuration =  {
 
 			{test: /\.(css)$/,use: [
 				{loader: "style-loader"}, 
-				{loader: "css-loader",options: {modules: true}}]},
+				{loader: "css-loader"}]},
 
 			{ test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)?$/, 
 				use: {
