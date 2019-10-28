@@ -5,7 +5,8 @@
     "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "strictNullChecks": false,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
     "allowSyntheticDefaultImports":true
   }
 }
