@@ -1,9 +1,9 @@
 import React from 'react'
 import {Router, Route} from 'react-router-dom'
-import historyProvider from './common/history-provider'
+import historyProvider from '../common/history-provider'
 
 /** 导入所有路由组件 */
-import PIndex from './view/pages/IndexPage'
+import PIndex from '../view/pages/IndexPage'
 
 // 应用路由器
 const AppRouter = ()=>(

@@ -7,7 +7,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 const config:webpack.Configuration =  {
 	mode: "development",
 
-	entry: './src/App.ts',
+	entry: './src/app/App.ts',
 
 	output: {
 		filename: '[name].js',
@@ -34,7 +34,7 @@ const config:webpack.Configuration =  {
 	plugins: [
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
-			template:"./src/App.html"
+			template:"./src/app/App.html"
 		}),
 		new CopyWebpackPlugin([
 			{from:path.resolve(__dirname,"./src/assets/public") ,to:path.resolve(__dirname,"./dist")}
