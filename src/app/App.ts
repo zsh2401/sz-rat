@@ -18,4 +18,4 @@ if(!debugMx.IS_DEV){
 }
 
 import AppRender from './AppRender'
-setTimeout(AppRender,5000);
+setTimeout(AppRender,1000);
