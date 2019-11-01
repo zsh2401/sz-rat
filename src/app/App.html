@@ -12,37 +12,30 @@
 
     <!-- iOS应用图标 -->
     <link rel="apple-touch-icon" sizes="256x256" href="ios_icon.png"></link>
+
     <!-- iOS环境下状态栏颜色 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="white"></meta>
 
-    <title>zsh-rat</title>
+    <title>sz-rat</title>
 
     <style>
-        .std-app{
-            height: 100%;
-            width: 100%;
-        }
-        .loading-panel-wrapper{
-            width: 100%;
-            height: 100%;
-            background: whitesmoke;
-            display: flex;
-            justify-content: center;
-        }
-        .loading-panel-inner{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        *{padding: 0px;margin: 0px;}
+        html{ width: 100%;height: 100%;}
+        body{ width: 100%; height: 100%;}
+        #app{height: 100%;width: 100%;}
+        .loading-panel-wrapper{width: 100%;height: 100%;flex-direction: column;background: whitesmoke;display: flex;justify-content: center;}
+        .loading-panel-inner{display: flex;justify-content: center;}
     </style>
 
 </head>
 <body>
-    <div id="app" class="std-app">
+    <div id="app">
         <div class="loading-panel-wrapper">
             <div class="loading-panel-inner">
-                <h1>Seymour Zhang's React Application Template</h1>
-                <h4>Just Do What You Want</h4>
+                <div>
+                    <h1>Seymour Zhang's React Application Template(rat)</h1>
+                    <h4>Just Do What You Want</h4>
+                </div>
             </div>
         </div>
     </div>

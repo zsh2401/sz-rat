@@ -4,10 +4,25 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-const config:webpack.Configuration =  {
-	mode: "development",
+const getVendors = ()=>{
+	let vendors:string[] = [];
+	let dependencies = require("./package.json").dependencies;
+	for(let key in dependencies){
+		if(key === "offline-plugin"){
+			continue;
+		}
+		vendors.push(key);
+	}
+	vendors.push("bootstrap/dist/css/bootstrap.min.css");
+	return vendors;
+}
 
-	entry: './src/app/App.ts',
+const config : webpack.Configuration =  {
+	entry:{
+		vendors:getVendors(),
+		app:'./src/app/App.ts',
+		notfound:"./src/app/NotFound.tsx"
+	},
 
 	output: {
 		filename: '[name].js',
@@ -19,9 +34,13 @@ const config:webpack.Configuration =  {
 
 			{test: /\.(html)$/, loader: "html-loader"},
 
-			{test: /\.(css)$/,use: [
-				{loader: "style-loader"}, 
-				{loader: "css-loader"}]},
+			{
+				test: /\.css$/,
+				loader: 'css-loader',
+				options: {
+				  modules: true,
+				},
+			},
 
 			{ test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)?$/, 
 				use: {
@@ -34,10 +53,19 @@ const config:webpack.Configuration =  {
 	plugins: [
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
-			template:"./src/app/App.html"
+			template:"./src/app/App.html",
+			chunks:["vendors","app"]
+		}),
+		new HtmlWebpackPlugin({
+			template:"./src/app/App.html",
+			filename:"404.html",
+			chunks:["vendors","notfound"]
 		}),
 		new CopyWebpackPlugin([
-			{from:path.resolve(__dirname,"./src/assets/public") ,to:path.resolve(__dirname,"./dist")}
+			{
+				from:path.resolve(__dirname,"./src/assets/public") ,
+				to:path.resolve(__dirname,"./dist")
+			}
 		]),
 		new OfflinePlugin()
 	],
@@ -47,15 +75,14 @@ const config:webpack.Configuration =  {
 		splitChunks: {
 			cacheGroups: {
 				vendors: {
+					name:"vendors",
 					priority: -10,
 					test: /[\\/]node_modules[\\/]/
 				}
 			},
-
-			chunks: 'async',
+			chunks: 'initial',
 			minChunks: 1,
 			minSize: 30000,
-			name: true
 		}
 	},
 

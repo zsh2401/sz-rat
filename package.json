@@ -1,15 +1,20 @@
 {
   "name": "sz-rat",
   "version": "1.0.0",
-  "szratversion":"0.0.1",
+  "szratversion": "0.0.3",
   "description": "Seymour Zhang's React Application template",
   "main": "src/App.ts",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server"
+    "build:dev": "webpack --mode development",
+    "start": "webpack-dev-server",
+    "start:prod": "webpack-dev-server --mode production"
   },
   "keywords": [
-    "template","react","spa","pwa"
+    "template",
+    "react",
+    "SPA",
+    "PWA"
   ],
   "author": "zsh2401",
   "license": "MIT",
