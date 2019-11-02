@@ -1,5 +1,5 @@
 import React from 'react'
-import idg from '../../common/id-generator'
+import idm from '../../common/id-manager'
 //@ts-ignore
 import AV from "leancloud-storage"
 //@ts-ignore
@@ -11,7 +11,7 @@ export interface ValineCommentProps{
     path?:string;
 }
 export default class ValineComment extends React.Component<ValineCommentProps>{
-    private id = idg();
+    private id = idm.allocate();
     componentDidMount(){
         new Valine({
             el:"#" + this.id,
@@ -24,5 +24,8 @@ export default class ValineComment extends React.Component<ValineCommentProps>{
     }
     render(){
         return <div id={this.id}></div>
+    }
+    componentWillUnmount(){
+        idm.free(this.id)
     }
 }
