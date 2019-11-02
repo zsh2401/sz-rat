@@ -1,12 +1,15 @@
+const APP_ID = "";
+const APP_KEY = "";
+const PLACE_HOLDER = "说点什么吧!";
+
+
+
 import React from 'react'
-import idm from '../../common/id-manager'
+import idm from '../../../common/id-manager'
 //@ts-ignore
 import AV from "leancloud-storage"
 //@ts-ignore
 import Valine from 'valine'
-const APP_ID = "";
-const APP_KEY = "";
-const PLACE_HOLDER = "说点什么吧!";
 export interface ValineCommentProps{
     path?:string;
 }

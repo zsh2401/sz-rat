@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import historyProvider from '../common/history-provider';
+import historyProvider from '../common/history-manager';
 import { Router, Route, Switch } from 'react-router';
 
-import IndexPage from '../view/pages/IndexPage';
-import NotFoundPage from '../view/pages/NotFoundPage';
+import {IndexPage,NotFoundPage} from '../view/pages/';
 
 //App容器
 const APP_CONTAIINER = document.querySelector("#app");

@@ -1,5 +1,5 @@
 import React from 'react'
-export class Template extends React.Component{
+export default class Template extends React.Component{
     render(){
         return <div>
             {this.props.children}

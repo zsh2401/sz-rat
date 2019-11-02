@@ -11,6 +11,10 @@ export interface BilibiliVideoState{
 }
 export default class BilibiliVideo extends React.Component<BilibiliVideoProps,BilibiliVideoState>{
     private observer:MutationObserver;
+    constructor(props){
+        super(props);
+        this.state = {fHeight:0,fWidth:0};
+    }
     private resize(){
         let w = this.mainDiv.clientWidth;
         let h = w * 0.66;
@@ -22,16 +26,19 @@ export default class BilibiliVideo extends React.Component<BilibiliVideoProps,Bi
     private get mainDiv():HTMLDivElement{
         return this.refs.mainDiv as HTMLDivElement;
     }
-    componentWillMount(){
-        this.state = {fHeight:0,fWidth:0};
+    private get resizeHandler(){
+        if(!this._resizeHandler){
+            this._resizeHandler = _.debounce(this.resize.bind(this));
+        }
+        return this._resizeHandler;
     }
+    private _resizeHandler:()=>void;
     componentDidMount(){
         this.resize();
-        this.observer = new MutationObserver(_.debounce(this.resize.bind(this)));
-        this.observer.observe(this.mainDiv);
+        window.addEventListener('resize',this.resizeHandler);
     }
     componentWillUnmount(){
-        this.observer.disconnect();
+        window.removeEventListener('resize',this.resizeHandler);
     }
     render(){
         let src = `//player.bilibili.com/player.html?aid=${this.props.av}&cid=${this.props.cid}&page=${this.props.page || 1}`;

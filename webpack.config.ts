@@ -34,13 +34,24 @@ const config : webpack.Configuration =  {
 
 			{test: /\.(html)$/, loader: "html-loader"},
 
+			// {
+			// 	test: /\.css$/,
+			// 	loader: 'css-loader',
+			// 	options: {
+			// 	  modules: true,
+			// 	},
+			// },
 			{
-				test: /\.css$/,
-				loader: 'css-loader',
-				options: {
-				  modules: true,
-				},
-			},
+                test: /\.css$/,
+                use: [
+                     {
+                         loader: 'style-loader'  // 可以把css放在页面上
+                     },
+                     {
+                         loader: 'css-loader'    // 放在后面的先被解析
+                     }
+                ]
+            },
 
 			{ test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)?$/, 
 				use: {
@@ -89,6 +100,7 @@ const config : webpack.Configuration =  {
 	//@ts-ignore
 	devServer: {
 		open: true,
+		host:"0.0.0.0",
 		port : 35672,
 	},
 
