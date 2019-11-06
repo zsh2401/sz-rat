@@ -1,3 +1,7 @@
+/**
+ * Provides some useful debug information
+ * 
+ */
 const DEV_STR = "development"
 const PROD_STR = "production"
 function isDev():boolean{

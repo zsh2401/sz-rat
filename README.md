@@ -1,6 +1,11 @@
 # Zsh's React Application Template
 Make your front-end development easier and faster!
 
+![](http://img.shields.io/travis/zsh2401/sz-rat.svg)
+![](https://img.shields.io/node/v/webpack)
+![](https://img.shields.io/github/languages/code-size/zsh2401/sz-rat)
+![](https://img.shields.io/badge/license-MIT-green)
+![](https://img.shields.io/github/package-json/v/zsh2401/sz-rat)
 # Features
 √ SPA + PWA Supported
 √ Responsive Supported     
