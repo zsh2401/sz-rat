@@ -29,8 +29,8 @@ function _generateId():Id{
 }
 function _getRecordArray():Array<Id>{
     if(!objectKeeper.get<Array<Id>>("id-g-result"))
-        objectKeeper.save("id-g-result",[]);
-    return objectKeeper.get<Array<Id>>("idg-record");
+        objectKeeper.put("id-g-result",[]);
+    return objectKeeper.get<Array<Id>>("id-g-result");
 }
 function _wasUsed(id:Id):boolean{
     return _getRecordArray().includes(id);

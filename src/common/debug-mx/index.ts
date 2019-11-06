@@ -9,5 +9,6 @@ export default {
     VERSION_NAME : packageInfo.version,
     PKG_NAME :packageInfo.name,
     DESC: packageInfo.description,
-    SZ_RAT_VERSION : packageInfo.szratversion
+    SZ_RAT_VERSION : packageInfo.szratversion,
+    PKG_INFO : packageInfo
 }
