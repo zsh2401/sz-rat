@@ -7,7 +7,7 @@ Make your front-end development easier and faster!
 ![](https://img.shields.io/badge/license-MIT-green)
 ![](https://img.shields.io/github/package-json/v/zsh2401/sz-rat)
 # Features
-√ SPA + PWA Supported
+√ SPA + PWA Supported   
 √ Responsive Supported     
 √ Useful light tools   
 √ Type check  
