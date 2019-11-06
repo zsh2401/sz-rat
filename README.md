@@ -1,4 +1,5 @@
-# Zsh's React Application Template
+# SZ-RAT
+**S**eymour **Z**hang's **R**eact **A**pplication **T**emplate   
 Make your front-end development easier and faster!
 
 ![](http://img.shields.io/travis/zsh2401/sz-rat.svg)
