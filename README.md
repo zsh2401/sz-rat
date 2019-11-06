@@ -35,6 +35,11 @@ Then...It's easy to run a local dev server!
 ```
 npm start
 ```
+You could build the application if you had finished the development of current version.
+```
+npm run build
+```
+Then the application files will build to the `dist` floder.
 # Start your development now!
 Go!Create new code and make your dreams come true!
 
