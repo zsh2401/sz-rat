@@ -31,21 +31,32 @@ export default class AsyncComponent extends React.Component<AsyncComponentProps,
             this.props.onError && this.props.onError("There is no any target to load!");
         }
     }
-    private loadAsync(loader:()=>Promise<any>){
-        loader()
-        .then((module)=>{
-            let that = this;
-            setTimeout(()=>
-                that.updateUI(module.default),
-                this.props.timeout || 1);
-        })
-        .catch(err=>this.props.onError && this.props.onError(err));
+    private async loadAsync(loader:()=>Promise<any>){
+        try{
+            this.props.onLoading && this.props.onLoading();
+
+            let componentType = (await loader()).default;
+            await this.updateUI(componentType);
+
+            this.props.onLoaded && this.props.onLoaded();
+        }catch(err){
+            this.props.onError && this.props.onError(err)
+        }
     }
-    private updateUI(componentType:React.ReactType){
-        this.setState({
-            component:componentType
+    private updateUI(componentType:React.ReactType):Promise<any>{
+        let that = this;
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                try{
+                    that.setState({
+                        component:componentType
+                    });
+                    resolve();
+                }catch(err){
+                    reject(err);
+                }
+            },this.props.timeout || 1)
         });
-        this.props.onLoaded && this.props.onLoaded();
     }
     render(){
         let Component = this.state.component;
