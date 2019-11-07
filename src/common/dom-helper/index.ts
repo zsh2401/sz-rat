@@ -1,1 +1,0 @@
-export {default as TitleManager} from './title-manager'

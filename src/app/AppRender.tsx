@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom'
 import historyProvider from '../common/history-manager';
 import { Router, Route, Switch } from 'react-router';
 
-import {IndexPage,NotFoundPage} from '../view/pages/';
+import {IndexPage,NotFoundPage} from '../view/pages';
+import { AsyncComponent } from '../view/components';
+
 
 //App容器
 const APP_CONTAIINER = document.querySelector("#app");
@@ -12,8 +14,8 @@ const APP_CONTAIINER = document.querySelector("#app");
 const AppRouter = ()=>(
 <Router history={historyProvider()}>
     <Switch>
-        <Route exact path="/" component={IndexPage}></Route>
-        <Route path="*" component={NotFoundPage}></Route>
+        <Route exact path="/" component={ IndexPage}></Route>
+        <Route path="*" component={()=><AsyncComponent loader={()=>import("../view/pages/NotFoundPage")}/>}></Route>
     </Switch>
 </Router>)
 

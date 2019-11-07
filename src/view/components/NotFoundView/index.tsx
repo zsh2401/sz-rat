@@ -4,7 +4,7 @@ import styles from './index.css'
 export default class NotFoundView extends React.Component{
     render(){
         return <div className={styles.app}>
-            www
+            404 NOT FOUND!
         </div>
     }
 }

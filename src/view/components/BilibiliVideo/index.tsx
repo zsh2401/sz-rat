@@ -10,7 +10,6 @@ export interface BilibiliVideoState{
     fHeight:number;
 }
 export default class BilibiliVideo extends React.Component<BilibiliVideoProps,BilibiliVideoState>{
-    private observer:MutationObserver;
     constructor(props){
         super(props);
         this.state = {fHeight:0,fWidth:0};
@@ -40,13 +39,17 @@ export default class BilibiliVideo extends React.Component<BilibiliVideoProps,Bi
     componentWillUnmount(){
         window.removeEventListener('resize',this.resizeHandler);
     }
+    private static
+     readonly innerHTML = `
+    `
     render(){
         let src = `//player.bilibili.com/player.html?aid=${this.props.av}&cid=${this.props.cid}&page=${this.props.page || 1}`;
-        //@ts-ignore
-        return <div ref="mainDiv" className="w-100"><iframe
-            style={{height:this.state.fHeight+"px",width:this.state.fWidth+"px"}}
-            src={src}
-            scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        return <div ref="mainDiv" className="w-100">
+            {
+                //@ts-ignore
+                 <iframe style={{height:this.state.fHeight+"px",width:this.state.fWidth+"px"}} src={src} scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+            }
+           
         </div>
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Template,BilibiliVideo } from '../../components/'
-import { TitleManager } from '../../../common/dom-helper'
+import { Template,AsyncComponent } from '../../components'
+import { TitleManager } from '../../../common/view-helper'
 import idManager from '../../../common/id-manager'
 export interface IndexPageState{
     poped:string

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Template,NotFoundView} from '../../components/'
+import { Template,NotFoundView} from '../../components'
 export default class NotFoundPage extends React.Component{
     render(){
         return <Template>
