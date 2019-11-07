@@ -5,10 +5,10 @@
   "description": "Seymour Zhang's React Application template",
   "main": "src/App.ts",
   "scripts": {
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
-    "start": "webpack-dev-server",
-    "start:prod": "webpack-dev-server --mode production"
+    "build": "webpack --config ./build/webpack.config.prod.ts",
+    "build:dev": "webpack --config ./build/webpack.config.dev.ts",
+    "start": "webpack-dev-server --config ./build/webpack.config.dev.ts",
+    "start:prod": "webpack-dev-server --config ./build/webpack.config.prod.ts"
   },
   "keywords": [
     "template",
@@ -43,7 +43,8 @@
     "url-loader": "^2.2.0",
     "webpack": "4.39.3",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "3.7.2"
+    "webpack-dev-server": "3.7.2",
+    "webpack-parallel-uglify-plugin": "^1.1.2"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
