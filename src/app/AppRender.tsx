@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import historyProvider from '../common/history-manager';
 import { Router, Route, Switch } from 'react-router';
 
-import {IndexPage,NotFoundPage} from '../view/pages';
+import {IndexPage, NotFoundPage} from '../view/pages';
 import { AsyncComponent } from '../view/components';
 
 
@@ -15,7 +15,7 @@ const AppRouter = ()=>(
 <Router history={historyProvider()}>
     <Switch>
         <Route exact path="/" component={ IndexPage}></Route>
-        <Route path="*" component={()=><AsyncComponent loader={()=>import("../view/pages/NotFoundPage")}/>}></Route>
+        <Route path="*" component={NotFoundPage}></Route>
     </Switch>
 </Router>)
 

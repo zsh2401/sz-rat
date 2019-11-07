@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import ParallelUglifyPlugin  from 'webpack-parallel-uglify-plugin'
+// webpack.optimize.Chun
 const getVendors = ()=>{
 	let vendors:string[] = [];
 	let dependencies = require("../package.json").dependencies;
@@ -53,6 +54,7 @@ const config : webpack.Configuration =  {
 			},
 		]
 	},
+	
 
 	plugins: [
 		new webpack.ProgressPlugin(), 
@@ -82,11 +84,17 @@ const config : webpack.Configuration =  {
 					name:"vendors",
 					priority: -10,
 					test: /[\\/]node_modules[\\/]/
-				}
+				},
+				default: {
+					minChunks: 2,
+					priority: -20,
+					reuseExistingChunk: true
+				  }
 			},
 			chunks: 'all',
 			minChunks: 1,
 			minSize: 30000,
+			maxSize:0
 		}
 	},
 

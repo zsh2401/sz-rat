@@ -12,4 +12,3 @@ import NotFoundPage from "../view/pages/NotFoundPage"
 
 /**全局css */
 ReactDOM.render(<NotFoundPage/>,document.querySelector("#app"));
-

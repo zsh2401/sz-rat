@@ -16,6 +16,10 @@ export default class IndexPage extends React.Component<any,IndexPageState>{
         });
     }
     render(){
+        // return <div className="safe-area d-flex flex-column bg-dark h-100 text-white">
+        //     <div className="flex-grow-1">start</div>
+        //     <div className="flex-grow-0">end</div>
+        // </div>
         return <Template>
             <div><h1>Seymour Zhang's React Application Template</h1></div>
             <div className="container">
@@ -26,7 +30,6 @@ export default class IndexPage extends React.Component<any,IndexPageState>{
                 <button onClick={this.poped.bind(this)}>
                     POP : {this.state.poped}
                 </button>
-                <AsyncComponent timeout={3000} loader={()=>import("../AsyncPageTest")}/>
             </div>
         </Template>
     }
