@@ -3,8 +3,7 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import ParallelUglifyPlugin  from 'webpack-parallel-uglify-plugin'
-// webpack.optimize.Chun
+
 const getVendors = ()=>{
 	let vendors:string[] = [];
 	let dependencies = require("../package.json").dependencies;
@@ -26,8 +25,8 @@ const config : webpack.Configuration =  {
 	},
 
 	output: {
-		filename: '[name].js',
-		chunkFilename: '[name].js',
+		filename: '[name].bundle.[hash].js',
+		chunkFilename: '[name].chunk.[hash].js',
 		path: path.resolve(__dirname, '../dist')
 	},
 	module: {
@@ -35,8 +34,8 @@ const config : webpack.Configuration =  {
 			{test: /\.(ts|tsx)?$/,loader: 'ts-loader',},
 
 			{test: /\.(html)$/, loader: "html-loader"},
-			{
-                test: /\.css$/,
+
+			{test: /\.css$/,
                 use: [
                      {
                          loader: 'style-loader'  // Put css to <style/>
@@ -47,9 +46,9 @@ const config : webpack.Configuration =  {
                 ]
             },
 
-			{ test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)?$/, 
+			{test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)?$/, 
 				use: {
-					loader:'url-loader?limit=100000&name=images/[name]_[hash:8].[ext]'
+					loader:'url-loader?limit=10000000000&name=images/[name]_[hash:8].[ext]'
 				}
 			},
 		]
@@ -83,17 +82,19 @@ const config : webpack.Configuration =  {
 				vendors: {
 					name:"vendors",
 					priority: -10,
+					chunks:'initial',
 					test: /[\\/]node_modules[\\/]/
 				},
 				default: {
 					minChunks: 2,
 					priority: -20,
 					reuseExistingChunk: true
-				  }
+				}
 			},
+			name: true,
 			chunks: 'all',
 			minChunks: 1,
-			minSize: 30000,
+			minSize: 300000,
 			maxSize:0
 		}
 	},
@@ -106,7 +107,7 @@ const config : webpack.Configuration =  {
 	},
 
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js','.css']
+		extensions: ['.tsx', '.ts', '.js','.css','.jpg']
 	}
 };
 

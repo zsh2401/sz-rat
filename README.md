@@ -13,7 +13,8 @@ Build your responsive,fast,useful and GREAT application for everyone!
 √ Responsive Supported     
 √ Useful light tools   
 √ Type check  
-
+√ LodableComponent   
+√ TS+Dynamically import supported
 # Todo
 - Dynamically import
 - Top Load Progress Bar
@@ -36,14 +37,20 @@ npm >= 6.4.1
 Install all dependencies first.
 ```
 npm install
+#or
+yarn
 ```
 Then...It's easy to run a local dev server!
 ```
-npm start
+npm run start
+#or
+yarn start
 ```
 You could build the application if you had finished the development of current version.
 ```
 npm run build
+#or
+yarn build
 ```
 Then the application files will build to the `dist` floder.
 # Start your development now!

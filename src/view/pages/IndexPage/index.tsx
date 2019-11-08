@@ -1,7 +1,18 @@
 import React from 'react'
-import { Template,AsyncComponent } from '../../components'
+import { Template, LodableComponent } from '../../components'
 import { TitleManager } from '../../../common/view-helper'
+import Loadable from 'react-loadable'
 import idManager from '../../../common/id-manager'
+
+
+const Loading = ()=>{
+    return <div>sss</div>
+}
+const LoadableView = Loadable({
+    loader: ()=>import(/* webpackChunkName: "widget" */"../DyncImportTestPage"),
+    loading:Loading
+});
+
 export interface IndexPageState{
     poped:string
 }
@@ -26,8 +37,12 @@ export default class IndexPage extends React.Component<any,IndexPageState>{
                 <button onClick={this.poped.bind(this)}>
                     POP : {this.state.poped}
                 </button>
-                <AsyncComponent timeout={3000} loader={()=>import("../AsyncPageTest")}/>
+                
+                <LodableComponent loader={()=>import("../DyncImportTestPage")} delay={4000}/>
             </div>
         </Template>
     }
+}
+function Holder(props){
+    return <div>{props.loadableStatus}-{props.loadableError}</div>
 }
