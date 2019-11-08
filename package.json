@@ -1,15 +1,15 @@
 {
   "name": "sz-rat",
-  "version": "0.1.0",
-  "szratversion": "0.1.0",
+  "version": "0.2.0",
+  "szratversion": "0.2.0",
   "description": "Seymour Zhang's React Application template",
   "main": "src/App.ts",
   "scripts": {
-    "dll": "cross-env TS_NODE_PROJECT=\"./build/tsconfig-for-webpack-config.json\" webpack --config ./build/webpack.dll.config.ts",
-    "build": "cross-env TS_NODE_PROJECT=\"./build/tsconfig-for-webpack-config.json\" webpack --config ./build/webpack.config.prod.ts",
-    "build:dev": "cross-env TS_NODE_PROJECT=\"./build/tsconfig-for-webpack-config.json\" webpack --config ./build/webpack.config.dev.ts",
-    "start": "cross-env TS_NODE_PROJECT=\"./build/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./build/webpack.config.dev.ts",
-    "start:prod": "cross-env TS_NODE_PROJECT=\"./build/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./build/webpack.config.prod.ts"
+    "deploy":"node ./scripts/deploy.js",
+    "build": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.prod.ts",
+    "build:dev": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.dev.ts",
+    "start": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.dev.ts",
+    "start:prod": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.prod.ts"
   },
   "keywords": [
     "template",
@@ -21,6 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/copy-webpack-plugin": "^5.0.0",
+    "@types/gh-pages": "^2.0.1",
     "@types/html-webpack-plugin": "^3.2.1",
     "@types/lodash": "^4.14.144",
     "@types/react": "^16.9.11",
@@ -36,6 +37,7 @@
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
+    "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",

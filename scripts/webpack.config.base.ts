@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
-import * as helper from './helper'
+import * as helper from './build-helper'
 
 const config : webpack.Configuration =  {
 	entry:{
