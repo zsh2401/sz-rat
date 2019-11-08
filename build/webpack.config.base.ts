@@ -3,13 +3,13 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
+import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 import * as helper from './helper'
 
 const config : webpack.Configuration =  {
 	entry:{
-		app:path.resolve(__dirname,'../src/app/App.ts') ,
-		notfound:path.resolve(__dirname,'../src/app/NotFound.tsx') ,
+		app:path.resolve(__dirname,'../src/app/AppMain.tsx'),
+		app404:path.resolve(__dirname,'../src/app/App404.tsx'),
 		vendors:helper.VENDORS,
 	},
 
@@ -61,6 +61,7 @@ const config : webpack.Configuration =  {
 				to:path.resolve(__dirname,"../dist")
 			}
 		]),
+		new CleanWebpackPlugin(),
 		new OfflinePlugin()
 	],
 

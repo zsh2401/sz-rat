@@ -1,11 +1,9 @@
+import "./init"
 import React from 'react'
 import ReactDOM from 'react-dom'
 import historyManager from '../common/history-manager';
 import { Router, Route, Switch } from 'react-router';
-
 import {IndexPage, NotFoundPage} from '../view/pages';
-
-
 //App容器
 const APP_CONTAIINER = document.querySelector("#app");
 
