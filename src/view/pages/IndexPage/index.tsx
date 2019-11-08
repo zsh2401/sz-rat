@@ -1,17 +1,8 @@
 import React from 'react'
 import { Template, LodableComponent } from '../../components'
 import { TitleManager } from '../../../common/view-helper'
-import Loadable from 'react-loadable'
 import idManager from '../../../common/id-manager'
 
-
-const Loading = ()=>{
-    return <div>sss</div>
-}
-const LoadableView = Loadable({
-    loader: ()=>import(/* webpackChunkName: "widget" */"../DyncImportTestPage"),
-    loading:Loading
-});
 
 export interface IndexPageState{
     poped:string

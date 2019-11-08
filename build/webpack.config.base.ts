@@ -1,27 +1,16 @@
-import path from 'path'
+import path, { resolve } from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-
-const getVendors = ()=>{
-	let vendors:string[] = [];
-	let dependencies = require("../package.json").dependencies;
-	for(let key in dependencies){
-		if(key === "offline-plugin"){
-			continue;
-		}
-		vendors.push(key);
-	}
-	vendors.push("bootstrap/dist/css/bootstrap.min.css");
-	return vendors;
-}
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+import * as helper from './helper'
 
 const config : webpack.Configuration =  {
 	entry:{
-		vendors:getVendors(),
 		app:path.resolve(__dirname,'../src/app/App.ts') ,
 		notfound:path.resolve(__dirname,'../src/app/NotFound.tsx') ,
+		vendors:helper.VENDORS,
 	},
 
 	output: {
@@ -31,7 +20,7 @@ const config : webpack.Configuration =  {
 	},
 	module: {
 		rules: [
-			{test: /\.(ts|tsx)?$/,loader: 'ts-loader',},
+			{test: /\.(ts|tsx)?$/,loader: 'awesome-typescript-loader'},
 
 			{test: /\.(html)$/, loader: "html-loader"},
 
@@ -48,7 +37,7 @@ const config : webpack.Configuration =  {
 
 			{test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)?$/, 
 				use: {
-					loader:'url-loader?limit=10000000000&name=images/[name]_[hash:8].[ext]'
+					loader:'url-loader?limit=100000&name=images/[name]_[hash:8].[ext]'
 				}
 			},
 		]
@@ -103,7 +92,7 @@ const config : webpack.Configuration =  {
 	devServer: {
 		open: true,
 		host:"0.0.0.0",
-		port : 35672,
+		port : helper.DEV_SERVER_PORT,
 	},
 
 	resolve: {
