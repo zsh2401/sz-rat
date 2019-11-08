@@ -1,39 +1,37 @@
-import React from 'react'
-import { Template, LodableComponent } from '../../components'
-import { TitleManager } from '../../../common/view-helper'
-import idManager from '../../../common/id-manager'
+import * as React from 'react';
+import { Template } from '../../components';
 
+export interface IIndexPageProps {
 
-export interface IndexPageState{
-    poped:string
 }
-export default class IndexPage extends React.Component<any,IndexPageState>{
-    constructor(props){
-        super(props);
-        this.state = {poped: "None"}
-    }
-    poped(){
-        this.setState({
-            poped : TitleManager.pop()
-        });
-    }
-    render(){
-        return <Template>
-            <div><h1>Seymour Zhang's React Application Template</h1></div>
-            <div className="container">
-                {/* <BilibiliVideo av="73877729" cid="126371320"/> */}
-                <button onClick={()=>TitleManager.push(idManager.allocate())}>
-                    Push
-                </button>
-                <button onClick={this.poped.bind(this)}>
-                    POP : {this.state.poped}
-                </button>
-                
-                <LodableComponent loader={()=>import("../DyncImportTestPage")} delay={4000}/>
-            </div>
-        </Template>
-    }
+
+export interface IIndexPageState {
 }
-function Holder(props){
-    return <div>{props.loadableStatus}-{props.loadableError}</div>
+
+export default class IndexPage extends React.Component<IIndexPageProps, IIndexPageState> {
+  constructor(props: IIndexPageProps) {
+    super(props);
+
+    this.state = {
+    }
+  }
+
+  public render() {
+    return (
+      <Template>
+          <div className="container">
+              <img className="img-fluid d-block ml-auto mr-auto" src={require("../../../assets/public/icon.png")}></img>
+              <h3 className="text-center">Seymour Zhang's React Application Template</h3>
+              <p className="text-center">v{require("../../../../package.json").version} <br/>by zsh2401</p>
+              <div className="mr-auto ml-auto" style={{maxWidth:'500px'}}>
+                <img src="http://img.shields.io/travis/zsh2401/sz-rat.svg"/>
+                <img src="https://img.shields.io/node/v/webpack"/>
+                <img src="https://img.shields.io/github/languages/code-size/zsh2401/sz-rat"/>
+                <img src="https://img.shields.io/badge/license-MIT-green"/>
+                <img src="https://img.shields.io/github/package-json/v/zsh2401/sz-rat"/>
+              </div>
+          </div>
+      </Template>
+    );
+  }
 }

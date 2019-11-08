@@ -53,7 +53,7 @@ const config : webpack.Configuration =  {
 		new HtmlWebpackPlugin({
 			template:path.resolve(__dirname,"../src/app/App.html"),
 			filename:"404.html",
-			chunks:["vendors","notfound"]
+			chunks:["vendors","app404"]
 		}),
 		new CopyWebpackPlugin([
 			{
