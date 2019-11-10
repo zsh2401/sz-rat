@@ -19,6 +19,7 @@ static pages server,like GH-PAGES,CODING-PAGES
 √ Type check  
 √ LodableComponent   
 √ TS+Dynamically import supported
+√ Very quickly fast screen
 # Todo
 - Dynamically import
 - Top Load Progress Bar
