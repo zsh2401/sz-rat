@@ -60,7 +60,7 @@ const config : webpack.Configuration =  {
 			}
 		]),
 		new CleanWebpackPlugin(),
-		new BundleAnalyzerPlugin(),
+		// new BundleAnalyzerPlugin(),
 		new OfflinePlugin({
 			caches:"all",
 			externals:[
