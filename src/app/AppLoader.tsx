@@ -18,8 +18,10 @@ async function loadApp(){
         console.log("is index page");
         await awaiter(1000);
     }
-    await EnvLoader.load("bootstrap");
-    await import(/*webpackChunkName:"real-app"*/"./App");
+    await Promise.all([
+        EnvLoader.load("bootstrap"),
+        import(/*webpackChunkName:"real-app"*/"./App")
+    ]);
 }
 function awaiter(ms:number):Promise<any>{
     return new Promise(resolve=>setTimeout(resolve,ms));
