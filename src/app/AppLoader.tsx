@@ -20,8 +20,9 @@ function renderLaunchView(){
 
 async function loadApp(){
     await EnvLoader.load("bootstrap");
-    if(/\/#[\/]?$/.test(window.location.pathname)){
-        await wait(500);
+    if(/#[\/]?$/.test(window.location.hash)){
+        console.log("is index page");
+        await wait(1000);
     }
     await import(/*webpackChunkName:"real-app"*/"./App");
 }
