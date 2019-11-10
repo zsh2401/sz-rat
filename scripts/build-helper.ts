@@ -8,6 +8,5 @@ export const VENDORS = (()=>{
 		}
 		vendors.push(key);
 	}
-	vendors.push("bootstrap/dist/css/bootstrap.min.css");
 	return vendors;
-})()
+})();

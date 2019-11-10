@@ -10,6 +10,8 @@ Build your responsive,fast,useful and GREAT application for everyone!
 ![](https://img.shields.io/github/package-json/v/zsh2401/sz-rat)
 # Online Demo
 [sz-rat.zsh2401.top](https://sz-rat.zsh2401.top)
+# Default Deploy Targets
+static pages server,like GH-PAGES,CODING-PAGES
 # Features
 √ SPA + PWA Supported   
 √ Responsive Supported     

@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 export interface BilibiliVideoProps{
     av:string;
     cid:string;
@@ -27,7 +26,7 @@ export default class BilibiliVideo extends React.Component<BilibiliVideoProps,Bi
     }
     private get resizeHandler(){
         if(!this._resizeHandler){
-            this._resizeHandler = _.debounce(this.resize.bind(this));
+            this._resizeHandler = this.resize.bind(this);
         }
         return this._resizeHandler;
     }

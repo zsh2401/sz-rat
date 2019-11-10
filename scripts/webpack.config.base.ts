@@ -1,16 +1,16 @@
-import path, { resolve } from 'path'
+import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import * as helper from './build-helper'
 
 const config : webpack.Configuration =  {
 	entry:{
-		app:path.resolve(__dirname,'../src/app/AppMain.tsx'),
-		app404:path.resolve(__dirname,'../src/app/App404.tsx'),
-		vendors:helper.VENDORS,
+		app:path.resolve(__dirname,'../src/app/AppLoader'),
 	},
 
 	output: {
@@ -42,18 +42,16 @@ const config : webpack.Configuration =  {
 			},
 		]
 	},
-	
+	externals:{
+		"react":"React",
+		"react-dom":"ReactDOM"
+	},
 
 	plugins: [
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
 			template:path.resolve(__dirname,"../src/app/App.html"),
-			chunks:["vendors","app"]
-		}),
-		new HtmlWebpackPlugin({
-			template:path.resolve(__dirname,"../src/app/App.html"),
-			filename:"404.html",
-			chunks:["vendors","app404"]
+			chunks:["app"]
 		}),
 		new CopyWebpackPlugin([
 			{
@@ -62,27 +60,40 @@ const config : webpack.Configuration =  {
 			}
 		]),
 		new CleanWebpackPlugin(),
-		new OfflinePlugin()
+		new BundleAnalyzerPlugin(),
+		new OfflinePlugin({
+			caches:"all",
+			externals:[
+				"https://cdn.bootcss.com/react/16.10.2/umd/react.production.min.js",
+				"https://cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js"
+			]
+		})
 	],
 
 	
 	optimization: {
+		minimizer:[
+			new UglifyJsPlugin({
+                uglifyOptions: {
+                    compress: true
+                }
+            })
+		],
 		splitChunks: {
 			cacheGroups: {
-				vendors: {
-					name:"vendors",
-					priority: -10,
-					chunks:'initial',
-					test: /[\\/]node_modules[\\/]/
-				},
-				default: {
-					minChunks: 2,
-					priority: -20,
-					reuseExistingChunk: true
+				// vendors: {
+				// 	name:"vendors",
+				// 	priority: -10,
+				// 	chunks:'initial',
+				// 	test: /[\\/]node_modules[\\/]/
+				// }
+				"bs-static-loader":{
+					name:"bs-static-loader",
+					chunks:"async"
 				}
 			},
 			name: true,
-			chunks: 'all',
+			chunks: 'async',
 			minChunks: 1,
 			minSize: 300000,
 			maxSize:0
