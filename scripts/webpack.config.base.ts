@@ -61,7 +61,7 @@ const config : webpack.Configuration =  {
 			"__CDN_RES":JSON.stringify(helper.CDN_RES)
 		}),
 		new CleanWebpackPlugin(),
-		new BundleAnalyzerPlugin(),
+		// new BundleAnalyzerPlugin(),
 		new OfflinePlugin({
 			caches:"all",
 			externals:helper.CDN_RES
