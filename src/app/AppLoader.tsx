@@ -1,27 +1,29 @@
-import EnvLoader from './env-loader/'
 import OfflinePluginRuntime from 'offline-plugin/runtime'
-import debugMx from '../common/debug-mx';
+import externalLoader from './external-loader';
 
-installSW();
+installSWIfNeed();
 loadApp();
 
-function installSW(){
-    //install service worker if it's dev env
-    if(!debugMx.IS_DEV){
+function installSWIfNeed(){
+    //install service worker if it's production env
+    if(process.env.NODE_ENV === "production"){
         console.log("Installing sw.js")
         OfflinePluginRuntime.install();
         console.log("Installed sw.js")
     }
 }
 async function loadApp(){
+    //@ts-ignore
+    let promises = __CDN_RES.map((url:string)=>externalLoader.auto(url));
+    await waitIfNeed();
+    await Promise.all(promises);
+    await import(/*webpackChunkName:"real-app"*/"./App")
+}
+async function waitIfNeed(){
     if(/#[\/]?$/.test(window.location.hash)){
         console.log("is index page");
         await awaiter(1000);
     }
-    await Promise.all([
-        EnvLoader.load("bootstrap"),
-        import(/*webpackChunkName:"real-app"*/"./App")
-    ]);
 }
 function awaiter(ms:number):Promise<any>{
     return new Promise(resolve=>setTimeout(resolve,ms));

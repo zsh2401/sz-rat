@@ -42,10 +42,7 @@ const config : webpack.Configuration =  {
 			},
 		]
 	},
-	externals:{
-		"react":"React",
-		"react-dom":"ReactDOM"
-	},
+	externals:helper.EXTERNALS,
 
 	plugins: [
 		new webpack.ProgressPlugin(), 
@@ -59,14 +56,15 @@ const config : webpack.Configuration =  {
 				to:path.resolve(__dirname,"../dist")
 			}
 		]),
+		new webpack.DefinePlugin({
+			"__EXTERNALS":JSON.stringify(helper.EXTERNALS),
+			"__CDN_RES":JSON.stringify(helper.CDN_RES)
+		}),
 		new CleanWebpackPlugin(),
-		// new BundleAnalyzerPlugin(),
+		new BundleAnalyzerPlugin(),
 		new OfflinePlugin({
 			caches:"all",
-			externals:[
-				"https://cdn.bootcss.com/react/16.10.2/umd/react.production.min.js",
-				"https://cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js"
-			]
+			externals:helper.CDN_RES
 		})
 	],
 
