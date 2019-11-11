@@ -91,10 +91,10 @@ const config : webpack.Configuration =  {
 				// 	chunks:'initial',
 				// 	test: /[\\/]node_modules[\\/]/
 				// }
-				"bs-static-loader":{
-					name:"bs-static-loader",
-					chunks:"async"
-				}
+				// "bs-static-loader":{
+				// 	name:"bs-static-loader",
+				// 	chunks:"async"
+				// }
 			},
 			name: true,
 			chunks: 'async',

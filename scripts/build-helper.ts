@@ -15,14 +15,14 @@ export const EXTERNALS:webpack.ExternalsElement | webpack.ExternalsElement[] = {
 	"jquery":"$",
 	"boostrap":"bootstrap"
 }
-export const VENDORS = (()=>{
-	let vendors:string[] = [];
-	let dependencies = require("../package.json").dependencies;
-	for(let key in dependencies){
-		if(key === "offline-plugin"){
-			continue;
-		}
-		vendors.push(key);
-	}
-	return vendors;
-})();
+// export const VENDORS = (()=>{
+// 	let vendors:string[] = [];
+// 	let dependencies = require("../package.json").dependencies;
+// 	for(let key in dependencies){
+// 		if(key === "offline-plugin"){
+// 			continue;
+// 		}
+// 		vendors.push(key);
+// 	}
+// 	return vendors;
+// })();
