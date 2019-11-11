@@ -5,26 +5,23 @@ installSWIfNeed();
 loadApp();
 
 function installSWIfNeed(){
-    //install service worker if it's production env
     if(process.env.NODE_ENV === "production"){
         console.log("Installing sw.js")
         OfflinePluginRuntime.install();
         console.log("Installed sw.js")
     }
 }
+declare const __CDN_RES:string[];
 async function loadApp(){
-    //@ts-ignore
-    let promises = __CDN_RES.map((url:string)=>externalLoader.auto(url));
+    for(let i=0;i<__CDN_RES.length;i++){
+        await externalLoader.auto(__CDN_RES[i]);
+    }
     await waitIfNeed();
-    await Promise.all(promises);
     await import(/*webpackChunkName:"real-app"*/"./App")
 }
 async function waitIfNeed(){
     if(/#[\/]?$/.test(window.location.hash)){
-        console.log("is index page");
-        await awaiter(1000);
+        // console.log("Here is index page");
+        await new Promise(resolve=>setTimeout(resolve,1500));
     }
-}
-function awaiter(ms:number):Promise<any>{
-    return new Promise(resolve=>setTimeout(resolve,ms));
 }

@@ -5,28 +5,36 @@ export default {
 }
 async function auto(url:string){
     if(url.endsWith(".js")){
-        fetchAndLoadScript(url);
+        await fetchAndLoadScript(url);
     }else{
-        fetchAndLoadStyle(url);
+        await fetchAndLoadStyle(url);
     }
 }
-async function loadStyle(style:string){
-    load("style",style);
-}
-async function loadScript(script:string){
-    load("script",script);
-}
 async function fetchAndLoadScript(url:string){
-    loadScript(await fetchText(url));
+    if(process.env.NODE_ENV === "development"){
+        console.log('[EXT-LOADER.SCRIPT]::Loading>'+url);
+    }
+    await load("script",await fetchText(url));
+    // console.log('[EXT-LOADER.SCRIPT]::Loaded');
 }
 async function fetchAndLoadStyle(url:string){
-    loadStyle(await fetchText(url));
+    if(process.env.NODE_ENV === "development"){
+        console.log('[EXT-LOADER.STYLE]::Loading>' + url);
+    }
+    await load("style",await fetchText(url));
+    // console.log('[EXT-LOADER.STYLE]::Loaded');
 }
 async function load(type:"script" | "style",content:string){
     let element = document.createElement(type);
     element.type = type === "script" ? "text/javascript" : "text/css";
     element.innerHTML = content;
     document.head.appendChild(element);
+    await waitForRepainted();
+}
+function waitForRepainted(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(resolve,0);
+    })
 }
 async function fetchText(url:string){
     return await (await fetch(url)).text();

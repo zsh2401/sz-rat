@@ -11,6 +11,7 @@ import * as helper from './build-helper'
 const config : webpack.Configuration =  {
 	entry:{
 		app:path.resolve(__dirname,'../src/app/AppLoader'),
+		"404":path.resolve(__dirname,'../src/app/404Handler'),
 	},
 
 	output: {
@@ -49,6 +50,11 @@ const config : webpack.Configuration =  {
 		new HtmlWebpackPlugin({
 			template:path.resolve(__dirname,"../src/app/App.html"),
 			chunks:["app"]
+		}),
+		new HtmlWebpackPlugin({
+			template:path.resolve(__dirname,"../src/app/App.html"),
+			filename:"404.html",
+			chunks:["404"]
 		}),
 		new CopyWebpackPlugin([
 			{
