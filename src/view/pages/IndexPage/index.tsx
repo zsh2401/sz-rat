@@ -20,7 +20,7 @@ export default class IndexPage extends React.Component<IIndexPageProps, IIndexPa
     return (
       <Template>
           <div className="container">
-              <img className="img-fluid d-block ml-auto mr-auto" src={require("../../../assets/public/icon.png")}></img>
+              <img className="img-fluid d-block ml-auto mr-auto" src={require("../../../app/icon/icon.png")}></img>
               <h3 className="text-center">Seymour Zhang's React Application Template</h3>
               <p className="text-center">v{require("../../../../package.json").version} <br/>by zsh2401</p>
               <div className="mr-auto ml-auto" style={{maxWidth:'500px'}}>

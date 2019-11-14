@@ -1,2 +1,2 @@
 export {default as TitleManager} from './title-manager'
-export {default as LoadingProgress} from './loading-progress'
+export {default as LoadingProgress} from './pace'

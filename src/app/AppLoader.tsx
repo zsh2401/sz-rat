@@ -1,8 +1,19 @@
 import OfflinePluginRuntime from 'offline-plugin/runtime'
 import externalLoader from './external-loader';
+import Pace from '../common/view-helper/pace'
 
-installSWIfNeed();
-loadApp();
+(async function init(){
+    let pace = new Pace(document.querySelector("#pace") as HTMLDivElement);
+    pace.updateProgress(5);
+    pace.updateProgress(10);
+    installSWIfNeed();
+    pace.updateProgress(30);
+    await loadEnv();
+    pace.updateProgress(90);
+    await waitIfNeed(1000);
+    await loadApp();
+    pace.updateProgress(100);
+})();
 
 function installSWIfNeed(){
     if(process.env.NODE_ENV === "production"){
@@ -11,17 +22,18 @@ function installSWIfNeed(){
         console.log("Installed sw.js")
     }
 }
-declare const __CDN_RES:string[];
-async function loadApp(){
+async function loadEnv(){
+    //@ts-ignore
     for(let i=0;i<__CDN_RES.length;i++){
+        //@ts-ignore
         await externalLoader.auto(__CDN_RES[i]);
     }
-    await waitIfNeed();
+}
+async function loadApp(){
     await import(/*webpackChunkName:"real-app"*/"./App")
 }
-async function waitIfNeed(){
+async function waitIfNeed(ms:number=1500){
     if(/#[\/]?$/.test(window.location.hash)){
-        // console.log("Here is index page");
-        await new Promise(resolve=>setTimeout(resolve,1500));
+        await new Promise(resolve=>setTimeout(resolve,ms));
     }
 }

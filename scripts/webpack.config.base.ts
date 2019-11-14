@@ -11,7 +11,7 @@ import * as helper from './build-helper'
 const config : webpack.Configuration =  {
 	entry:{
 		app:path.resolve(__dirname,'../src/app/AppLoader'),
-		"404":path.resolve(__dirname,'../src/app/404Handler'),
+		"404":path.resolve(__dirname,'../src/app/404Redirector'),
 	},
 
 	output: {
@@ -48,11 +48,11 @@ const config : webpack.Configuration =  {
 	plugins: [
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
-			template:path.resolve(__dirname,"../src/app/App.html"),
+			template:path.resolve(__dirname,"../src/app/template"),
 			chunks:["app"]
 		}),
 		new HtmlWebpackPlugin({
-			template:path.resolve(__dirname,"../src/app/App.html"),
+			template:path.resolve(__dirname,"../src/app/template"),
 			filename:"404.html",
 			chunks:["404"]
 		}),
@@ -60,7 +60,15 @@ const config : webpack.Configuration =  {
 			{
 				from:path.resolve(__dirname,"../src/assets/public") ,
 				to:path.resolve(__dirname,"../dist")
-			}
+			},
+			{
+				from:path.resolve(__dirname,"../src/app/icon/icon.ico") ,
+				to:path.resolve(__dirname,"../dist/favicon.ico")
+			},
+			{
+				from:path.resolve(__dirname,"../src/app/manifest.json") ,
+				to:path.resolve(__dirname,"../dist/manifest.json")
+			},
 		]),
 		new webpack.DefinePlugin({
 			"__EXTERNALS":JSON.stringify(helper.EXTERNALS),

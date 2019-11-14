@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import historyManager from '../common/history-manager';
 import { Router, Route, Switch } from 'react-router';
 import {IndexPage, NotFoundPage} from '../view/pages';
@@ -7,7 +7,7 @@ import {IndexPage, NotFoundPage} from '../view/pages';
 export default ()=>(
 <Router history={historyManager()}>
     <Switch>
-        <Route exact path="/" component={ IndexPage}></Route>
+        <Route exact path="/" component={IndexPage}></Route>
         <Route path="*" component={NotFoundPage}></Route>
     </Switch>
 </Router>)
