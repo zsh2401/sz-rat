@@ -15,9 +15,9 @@ export default class Pace{
     }
     public constructor(element:HTMLDivElement){
         this.wrapper = element;
-        this.wrapper.classList.add("pace-wrapper");
+        this.wrapper.classList.add("cpace-wrapper");
         this.inner = document.createElement('div');
-        this.inner.classList.add("pace-inner");
+        this.inner.classList.add("cpace-inner");
         this.inner.style.width = "0%";
         this.wrapper.appendChild(this.inner);
         Pace.setInstance(this);
