@@ -1,7 +1,7 @@
 {
   "name": "sz-rat",
-  "version": "0.4",
-  "szratversion": "0.4",
+  "version": "0.5",
+  "szratversion": "0.5",
   "description": "Seymour Zhang's React Application template",
   "main": "src/app/App.ts",
   "scripts": {
@@ -33,7 +33,6 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "clean-webpack-plugin": "^3.0.0",
-    "concurrently": "^5.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
