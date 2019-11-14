@@ -3047,6 +3047,14 @@ ee-first@1.1.1:
   resolved "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
+ejs-loader@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.npm.taobao.org/ejs-loader/download/ejs-loader-0.3.5.tgz#1105ac1a262e3f36079e8b2bd6ec6058434f60e7"
+  integrity sha1-EQWsGiYuPzYHnosr1uxgWENPYOc=
+  dependencies:
+    loader-utils "^0.2.7"
+    lodash "^4.17.15"
+
 ejs@^2.3.4, ejs@^2.5.9, ejs@^2.6.1:
   version "2.7.1"
   resolved "https://registry.npm.taobao.org/ejs/download/ejs-2.7.1.tgz?cache=0&sync_timestamp=1567453332151&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fejs%2Fdownload%2Fejs-2.7.1.tgz#5b5ab57f718b79d4aca9254457afecd36fa80228"
@@ -5497,7 +5505,7 @@ loader-runner@^2.4.0:
   resolved "https://registry.npm.taobao.org/loader-runner/download/loader-runner-2.4.0.tgz#ed47066bfe534d7e84c4c7b9998c2a75607d9357"
   integrity sha1-7UcGa/5TTX6ExMe5mYwqdWB9k1c=
 
-loader-utils@0.2.x, loader-utils@^0.2.16:
+loader-utils@0.2.x, loader-utils@^0.2.16, loader-utils@^0.2.7:
   version "0.2.17"
   resolved "https://registry.npm.taobao.org/loader-utils/download/loader-utils-0.2.17.tgz#f86e6374d43205a6e6c60e9196f17c0299bfb348"
   integrity sha1-+G5jdNQyBabmxg6RlvF8Apm/s0g=

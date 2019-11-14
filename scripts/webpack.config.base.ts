@@ -6,24 +6,30 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
-import * as helper from './build-helper'
-
+import pkgInfo from '../package.json'
+const IS_DEV = process.env.NODE_ENV === "development";
 const config : webpack.Configuration =  {
 	entry:{
-		app:path.resolve(__dirname,'../src/app/AppLoader'),
-		"404":path.resolve(__dirname,'../src/app/404Redirector'),
+		apppreloader:path.resolve(__dirname,'../src/app/app-preloader'),
+		"404":path.resolve(__dirname,'../src/common/404redirector')
 	},
 
 	output: {
-		filename: '[name].bundle.[hash].js',
-		chunkFilename: '[name].chunk.[hash].js',
+		filename: 'js/[name].bundle.[hash].js',
+		chunkFilename: 'js/[name].chunk.[hash].js',
 		path: path.resolve(__dirname, '../dist')
 	},
 	module: {
 		rules: [
 			{test: /\.(ts|tsx)?$/,loader: 'awesome-typescript-loader'},
 
-			{test: /\.(html)$/, loader: "html-loader"},
+			{test: /\.(html)$/,
+				loader:"html-loader"
+			},
+
+			{test: /\.(ejs)$/,
+				loader:"ejs-loader"
+			},
 
 			{test: /\.css$/,
                 use: [
@@ -43,17 +49,22 @@ const config : webpack.Configuration =  {
 			},
 		]
 	},
-	externals:helper.EXTERNALS,
+	// externals: helper.EXTERNALS,
 
 	plugins: [
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
-			template:path.resolve(__dirname,"../src/app/template"),
-			chunks:["app"]
+			template:path.resolve(__dirname,"../src/app/AppPage.ejs"),
+			minify: { // 压缩HTML文件
+				removeComments: true, // 移除HTML中的注释
+				collapseWhitespace: true, // 删除空白符与换行符
+				minifyCSS: true// 压缩内联css
+			},
+			chunks:["apppreloader"]
 		}),
 		new HtmlWebpackPlugin({
-			template:path.resolve(__dirname,"../src/app/template"),
 			filename:"404.html",
+			title:"404redictor",
 			chunks:["404"]
 		}),
 		new CopyWebpackPlugin([
@@ -70,15 +81,11 @@ const config : webpack.Configuration =  {
 				to:path.resolve(__dirname,"../dist/manifest.json")
 			},
 		]),
-		new webpack.DefinePlugin({
-			"__EXTERNALS":JSON.stringify(helper.EXTERNALS),
-			"__CDN_RES":JSON.stringify(helper.CDN_RES)
-		}),
 		new CleanWebpackPlugin(),
 		// new BundleAnalyzerPlugin(),
 		new OfflinePlugin({
 			caches:"all",
-			externals:helper.CDN_RES
+			// externals:helper.CDN_RES
 		})
 	],
 
@@ -93,14 +100,14 @@ const config : webpack.Configuration =  {
 		],
 		splitChunks: {
 			cacheGroups: {
-				// vendors: {
-				// 	name:"vendors",
-				// 	priority: -10,
-				// 	chunks:'initial',
-				// 	test: /[\\/]node_modules[\\/]/
-				// }
-				// "bs-static-loader":{
-				// 	name:"bs-static-loader",
+				vendors: {
+					name:"vendors",
+					priority: -10,
+					chunks:'initial',
+					test: /[\\/]node_modules[\\/]/
+				},
+				// default:{
+				// 	priority:10,
 				// 	chunks:"async"
 				// }
 			},
@@ -114,9 +121,9 @@ const config : webpack.Configuration =  {
 
 	//@ts-ignore
 	devServer: {
-		open: true,
+		open: false,
 		host:"0.0.0.0",
-		port : helper.DEV_SERVER_PORT,
+		port : 5000,
 	},
 
 	resolve: {
