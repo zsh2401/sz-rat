@@ -1,8 +1,8 @@
 {
   "name": "sz-rat",
-  "version": "0.5",
+  "version": "0.6",
   "sz-rat":{
-      "version":"0.5"
+      "version":"0.6"
   },
   "description": "Seymour Zhang's React Application template",
   "main": "src/app/App.ts",
