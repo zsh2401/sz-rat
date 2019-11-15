@@ -1,4 +1,7 @@
 /* 应用的全局CSS */
+:global(*){
+    font-family: Microsoft YaHei UI Light,Microsoft YaHei, sans-serif;
+}
 :global(.safe-area){
     width: 100%;
     height: 100%;

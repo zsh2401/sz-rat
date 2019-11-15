@@ -1,7 +1,9 @@
 {
   "name": "sz-rat",
   "version": "0.5",
-  "szratversion": "0.5",
+  "sz-rat":{
+      "version":"0.5"
+  },
   "description": "Seymour Zhang's React Application template",
   "main": "src/app/App.ts",
   "scripts": {
@@ -24,6 +26,7 @@
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/gh-pages": "^2.0.1",
     "@types/html-webpack-plugin": "^3.2.1",
+    "@types/lodash": "^4.14.147",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
     "@types/react-loadable": "^5.5.2",
@@ -60,6 +63,7 @@
     "bootstrap": "^4.3.1",
     "ejs-loader": "^0.3.5",
     "jquery": "^3.4.1",
+    "lodash": "^4.17.15",
     "offline-plugin": "^5.0.7",
     "pace": "^0.0.4",
     "react": "^16.11.0",
