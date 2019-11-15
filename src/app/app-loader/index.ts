@@ -1,7 +1,6 @@
 // console.log("wtf");
 import OfflinePluginRuntime from 'offline-plugin/runtime'
 import * as topPace from '../../common/view-helper/top-pace'
-
 (async ()=>{
     await topPace.initGlobalPace();
 

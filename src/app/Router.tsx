@@ -1,13 +1,13 @@
 import React from 'react';
 import historyManager from '../common/history-manager';
 import { Router, Route, Switch } from 'react-router';
-import {IndexPage, NotFoundPage} from '../view/pages';
+import { IndexPage, NotFoundPage } from '../view/pages';
 
-// 应用路由器
-export default ()=>(
-<Router history={historyManager()}>
-    <Switch>
-        <Route exact path="/" component={IndexPage}></Route>
-        <Route path="*" component={NotFoundPage}></Route>
-    </Switch>
-</Router>)
+export default function AppRouter() {
+    return <Router history={historyManager.get()}>
+        <Switch>
+            <Route exact path="/" component={IndexPage}></Route>
+            <Route path="*" component={NotFoundPage}></Route>
+        </Switch>
+    </Router>
+}

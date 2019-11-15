@@ -17,6 +17,10 @@ const config : webpack.Configuration =  {
 		chunkFilename: 'js/[name].chunk.[hash].js',
 		path: path.resolve(__dirname, '../dist')
 	},
+	externals:{
+		"react":"React",
+		"react-dom":'ReactDOM'
+	},
 	module: {
 		rules: [
 			{test: /\.(ts|tsx)?$/,loader: 'awesome-typescript-loader'},

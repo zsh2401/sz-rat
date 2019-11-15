@@ -1,8 +1,8 @@
 {
   "name": "sz-rat",
-  "version": "0.6",
-  "sz-rat":{
-      "version":"0.6"
+  "version": "0.6.0",
+  "sz-rat": {
+    "version": "0.6.0"
   },
   "description": "Seymour Zhang's React Application template",
   "main": "src/app/App.ts",
@@ -31,6 +31,7 @@
     "@types/react-dom": "^16.9.3",
     "@types/react-loadable": "^5.5.2",
     "@types/react-router-dom": "^5.1.0",
+    "@types/styled-components": "^4.4.0",
     "@types/webpack": "^4.39.5",
     "@webpack-cli/init": "^0.2.2",
     "awesome-typescript-loader": "^5.2.1",
@@ -69,6 +70,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "react-use": "^13.8.0"
+    "react-use": "^13.8.0",
+    "styled-components": "^4.4.1"
   }
 }
