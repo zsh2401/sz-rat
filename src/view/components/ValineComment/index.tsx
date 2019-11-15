@@ -7,15 +7,16 @@ const PLACE_HOLDER = "说点什么吧!";
 import React from 'react'
 import idm from '../../../common/id-manager'
 //@ts-ignore
-import AV from "leancloud-storage"
+// import AV from "leancloud-storage"
 //@ts-ignore
-import Valine from 'valine'
+// import Valine from 'valine'
 export interface ValineCommentProps{
     path?:string;
 }
 export default class ValineComment extends React.Component<ValineCommentProps>{
     private id = idm.allocate();
     componentDidMount(){
+        //@ts-ignore
         new Valine({
             el:"#" + this.id,
             appId:APP_ID,

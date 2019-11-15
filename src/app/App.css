@@ -1,13 +1,13 @@
 /* 应用的全局CSS */
-.safe-area{
+:global(.safe-area){
     width: 100%;
     height: 100%;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
 }
-.padding-safe-bottom{
+:global(.padding-safe-bottom){
     padding-bottom: env(safe-area-inset-bottom);
 }
-.padding-safe-top{
+:global(.padding-safe-top){
     padding-top: env(safe-area-inset-top);
 }

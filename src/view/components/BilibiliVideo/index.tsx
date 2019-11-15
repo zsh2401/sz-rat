@@ -9,7 +9,7 @@ export interface BilibiliVideoState{
     fHeight:number;
 }
 export default class BilibiliVideo extends React.Component<BilibiliVideoProps,BilibiliVideoState>{
-    constructor(props){
+    constructor(props:BilibiliVideoProps){
         super(props);
         this.state = {fHeight:0,fWidth:0};
     }

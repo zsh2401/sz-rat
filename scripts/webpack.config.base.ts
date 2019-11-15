@@ -6,11 +6,9 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
-import pkgInfo from '../package.json'
-const IS_DEV = process.env.NODE_ENV === "development";
 const config : webpack.Configuration =  {
 	entry:{
-		apppreloader:path.resolve(__dirname,'../src/app/app-preloader'),
+		apploader:path.resolve(__dirname,'../src/app/app-loader'),
 		"404":path.resolve(__dirname,'../src/common/404redirector')
 	},
 
@@ -37,7 +35,7 @@ const config : webpack.Configuration =  {
                          loader: 'style-loader'  // Put css to <style/>
                      },
                      {
-                         loader: 'css-loader'    // parse css
+                         loader: 'css-loader?modules=true'    // parse css
                      }
                 ]
             },
@@ -60,7 +58,7 @@ const config : webpack.Configuration =  {
 				collapseWhitespace: true, // 删除空白符与换行符
 				minifyCSS: true// 压缩内联css
 			},
-			chunks:["apppreloader"]
+			chunks:["apploader"]
 		}),
 		new HtmlWebpackPlugin({
 			filename:"404.html",
@@ -100,16 +98,12 @@ const config : webpack.Configuration =  {
 		],
 		splitChunks: {
 			cacheGroups: {
-				vendors: {
-					name:"vendors",
-					priority: -10,
-					chunks:'initial',
-					test: /[\\/]node_modules[\\/]/
-				},
-				// default:{
-				// 	priority:10,
-				// 	chunks:"async"
-				// }
+				// vendors: {
+				// 	name:"vendors",
+				// 	priority: -10,
+				// 	chunks:'initial',
+				// 	test: /[\\/]node_modules[\\/]/
+				// },
 			},
 			name: true,
 			chunks: 'async',

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Template } from '../../components';
+import { Template } from '../../components/';
 import Pace from '../../components/PaceBar/'
+import HWCenter from '../../components/HWCenter';
 export interface IIndexPageProps {
 
 }
@@ -21,7 +22,6 @@ export default class IndexPage extends React.Component<IIndexPageProps, IIndexPa
   public render() {
     return (
       <Template>
-          <div className="container">
               <img className="img-fluid d-block ml-auto mr-auto" src={require("../../../app/icon/icon.png")}></img>
               <h3 className="text-center">Seymour Zhang's React Application Template</h3>
               <p className="text-center">v{require("../../../../package.json").version} <br/>by zsh2401</p>
@@ -32,7 +32,6 @@ export default class IndexPage extends React.Component<IIndexPageProps, IIndexPa
                 <img src="https://img.shields.io/badge/license-MIT-green"/>
                 <img src="https://img.shields.io/github/package-json/v/zsh2401/sz-rat"/>
               </div>
-          </div>
       </Template>
     );
   }

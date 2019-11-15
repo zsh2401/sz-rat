@@ -1,5 +1,6 @@
 import * as React from 'react';
-import "./pace.css"
+//@ts-ignore
+import paceStyle from "./pace.css"
 export interface IPaceBarProps {
         fixed?:boolean;
         percent:number;
@@ -51,7 +52,7 @@ export default class PaceBar extends React.Component<IPaceBarProps, IPaceBarStat
     }
     public render() {
         return (
-        <div className={"pace-wrapper " + (this.props.className || "")} 
+        <div className={`${paceStyle.paceWrapper}` + (this.props.className || "")} 
                 style={{visibility:this.props.visible === false ? "hidden" : "visible", position: this.props.fixed ? "fixed" : undefined}}>
             <div className={"pace-inner " + (this.props.innerClassName || "")}
                 style={{width:this.state.percent + "%"}}

@@ -1,9 +1,0 @@
-.cpace-wrapper{
-    width: 100%;
-    height: 2px;
-    /* background: white; */
-}
-.cpace-inner{
-    background-image: linear-gradient( 135deg, #2AFADF 10%, #4C83FF 100%);
-    height: 100%;
-}
