@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import * as topPace from '../view-helper/top-pace'
 import useRestorable from './useRestorable'
-export type percentSetter = (percent:number)=>Promise<unknown>;
-export type percentGetter = ()=>number;
-export default function():[percentGetter,percentSetter]{
+export type PercentSetter = (percent:number)=>Promise<unknown>;
+export type PercentGetter = ()=>number;
+export default function():[PercentGetter,PercentSetter]{
     const setter = topPace.updateProgress;
     const getter = topPace.getPercent;
     useRestorable(()=>{
