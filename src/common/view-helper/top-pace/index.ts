@@ -52,7 +52,6 @@ export async function percentSetterAnimated(value:number){
 function nextFrame(crt:number,target:number,endCallback:()=>void){
     if(crt > target){
         crt--;
-        return;
     }else if(crt < target){
         crt++;
     }else{

@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {useTitle,useEffectOnce} from '../../../common/hooks/'
 import { Template} from '../../components'
 import { Link, useHistory } from 'react-router-dom';
 import HWCenter from '../../components/HWCenter';
 import useTopPace from '../../../common/hooks/useTopPace';
-import historyManager from '../../../common/history-manager';
 const GOBACK_SECONDS = 10;
 export default function NotFoundPage() {
     let history = useHistory();
     let [lastSencond,setLastSecond] = useState(GOBACK_SECONDS);
 
-  
     let [,paceSetter] = useTopPace();
     let timer = ()=>{
         let interval = setInterval(()=>{
@@ -19,7 +17,9 @@ export default function NotFoundPage() {
                 history.go(-1);
             }else{
                 setLastSecond(--lastSencond);
-                paceSetter((lastSencond / GOBACK_SECONDS) * 100.0)
+                let percent = (lastSencond / GOBACK_SECONDS) * 100.0;
+                console.log(percent);
+                paceSetter(percent)
             }
         },1000);
     }

@@ -19,7 +19,7 @@ const record:IRecord = {
 
     "react":{alias:"React",contentURL:"https://cdn.jsdelivr.net/npm/react@16.11.0/umd/react.production.min.js"},
     "react-dom":{alias:"ReactDOM",contentURL:"https://cdn.jsdelivr.net/npm/react-dom@16.11.0/umd/react-dom.production.min.js"},
-    "react-router-dom":{alias:"ReactRouterDOM",contentURL:"https://cdn.jsdelivr.net/npm/react-router-dom@5.1.2/umd/react-router-dom.min.js"},
+    // "react-router-dom":{alias:"ReactRouterDOM",contentURL:"https://cdn.jsdelivr.net/npm/react-router-dom@5.1.2/umd/react-router-dom.min.js"},
 
     "lodash":{alias:"_",contentURL:"https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"}
 }
