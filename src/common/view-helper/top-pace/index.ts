@@ -1,58 +1,64 @@
 /**Do not use React 
  * Pure JavaScript implenmented
 */
-const GLOBAL_PACE_ID = "__global-pace"
-export async function initGlobalPace(){
+let wrapperElement:HTMLDivElement;
+let innerElement:HTMLDivElement;
+export async function init(element:HTMLDivElement){
+    wrapperElement = element;
+    innerElement = document.createElement("div");
+    wrapperElement.appendChild(innerElement);
 
-    let wrapper = document.getElementById(GLOBAL_PACE_ID) as HTMLDivElement;
-    let inner = document.createElement("div");
-    wrapper.appendChild(inner);
+    wrapperElement.style.position = "fixed";
+    wrapperElement.classList.add("__global-pace-wrapper");
+    wrapperElement.style.width = "100%";
+    wrapperElement.style.height = "2px";
+    wrapperElement.style.backgroundColor = "whitesmoke";
 
-    wrapper.style.position = "fixed";
-    wrapper.classList.add("__global-pace-wrapper");
-    wrapper.style.width = "100%";
-    wrapper.style.height = "2px";
-
-    inner.className="__global-pace-inner"
-    inner.style.backgroundImage = "linear-gradient( 135deg, #2AFADF 10%, #4C83FF 100%)";
-    inner.style.width = "0%";
-    inner.style.height = "100%"
+    innerElement.className="__global-pace-inner"
+    innerElement.style.backgroundImage = "linear-gradient( 135deg, #2AFADF 10%, #4C83FF 100%)";
+    innerElement.style.width = "0%";
+    innerElement.style.height = "100%"
 
     await new Promise(resolve=>setTimeout(resolve,0));
 }
-export function getPercent():number{
-    let element = document.getElementsByClassName("__global-pace-inner")[0] as HTMLDivElement;
-    let widthString = element.style.width;
+export function percentAdder(addValue:number){
+    return percentSetter(percentGetter() + addValue);
+}
+export function percentGetter(){
+    let widthString = innerElement.style.width;
     return +widthString.slice(0,widthString.length-1);
 }
-export async function updateProgress(percent:number){
-    return new Promise((resolve,reject)=>{
-        if(percent > 100)percent = 0;
-
-        let element = document.getElementsByClassName("__global-pace-inner")[0] as HTMLDivElement;
-
-        let widthString = element.style.width;
-        let crtPercent = +widthString.slice(0,widthString.length-1);
-        
-        playNextFrame(element,crtPercent,percent,resolve);
+export function percentSetter(value:number){
+    display();
+    if(value >= 100 || value < 0){
+        hide();
+        return;
+    }
+    innerElement.style.width = value + "%";
+    return percentGetter();
+}
+export function hide(){
+    percentSetter(0);
+    wrapperElement.style.visibility = "hidden";
+}
+export function display(){
+    wrapperElement.style.visibility = "visible";
+}
+export async function percentSetterAnimated(value:number){
+    return new Promise((resolve)=>{
+        requestAnimationFrame(()=>nextFrame(percentGetter(),value,resolve));
     });
 }
-function playNextFrame(innerElement:HTMLDivElement,crtPercent:number,targetPercent:number,callback:()=>void){
-    if(targetPercent === 0 || crtPercent === 100){
-        innerElement.style.width = "0%";
-        callback();
+function nextFrame(crt:number,target:number,endCallback:()=>void){
+    if(crt > target){
+        crt--;
         return;
-    }
-    else if(crtPercent > targetPercent){
-        crtPercent--;
-    }else if(crtPercent < targetPercent){
-        crtPercent++;
+    }else if(crt < target){
+        crt++;
     }else{
-        callback();
+        endCallback();
         return;
     }
-    innerElement.style.width = crtPercent + "%";
-    requestAnimationFrame(()=>{
-        playNextFrame(innerElement,crtPercent,targetPercent,callback);
-    })
+    percentSetter(crt);
+    requestAnimationFrame(()=>nextFrame(crt,target,endCallback));
 }

@@ -1,4 +1,5 @@
 import React, { HTMLAttributes } from 'react'
+import debugMx from '../../../common/debug-mx';
 export interface IAppTemplateProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement>{
     childrenWrapperClassName?:string;
 }
@@ -11,7 +12,7 @@ export default function(props:IAppTemplateProps){
             </div>
             <footer className="flex-grow-0">
                 <p className="text-center">
-                    Copyright © 2017 - 2019 zsh2401,All Rights Reserved
+                    Copyright © 2017 - {new Date().getFullYear()} {debugMx.AUTHOR},All Rights Reserved
                     <br/>Love Yin For Good</p>
             </footer>
         </div>

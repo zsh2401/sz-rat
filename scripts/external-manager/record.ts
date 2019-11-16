@@ -17,11 +17,9 @@ const record:IRecord = {
     "jquery":{contentURL:"https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"},
     "bootstrap":{contentURL:"https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"},
 
-    "react":{alias:"React",contentURL:"https://cdn.jsdelivr.net/npm/react@16.12.0/umd/react.production.min.js"},
-    "react-dom":{alias:"ReactDOM",contentURL:"https://cdn.jsdelivr.net/npm/react-dom@16.12.0/umd/react-dom.production.min.js"},
-    // "react-router":{contentURL:"https://cdn.jsdelivr.net/npm/react-router@5.1.2/umd/react-router.min.js"},
+    "react":{alias:"React",contentURL:"https://cdn.jsdelivr.net/npm/react@16.11.0/umd/react.production.min.js"},
+    "react-dom":{alias:"ReactDOM",contentURL:"https://cdn.jsdelivr.net/npm/react-dom@16.11.0/umd/react-dom.production.min.js"},
     "react-router-dom":{alias:"ReactRouterDOM",contentURL:"https://cdn.jsdelivr.net/npm/react-router-dom@5.1.2/umd/react-router-dom.min.js"},
-    // "react-use":{contentURL:"https://cdn.jsdelivr.net/npm/react-use@13.8.0/lib/index.min.js"},
 
     "lodash":{alias:"_",contentURL:"https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"}
 }

@@ -13,6 +13,7 @@ export default {
     VERSION_NAME : packageInfo.version,
     PKG_NAME :packageInfo.name,
     DESC: packageInfo.description,
-    SZ_RAT_VERSION : packageInfo.szratversion,
-    PKG_INFO : packageInfo
+    SZ_RAT_VERSION : packageInfo["sz-rat"].version,
+    PKG_INFO : packageInfo,
+    AUTHOR:packageInfo.author
 }

@@ -4,11 +4,13 @@ import { Template} from '../../components'
 import { Link, useHistory } from 'react-router-dom';
 import HWCenter from '../../components/HWCenter';
 import useTopPace from '../../../common/hooks/useTopPace';
+import historyManager from '../../../common/history-manager';
 const GOBACK_SECONDS = 10;
 export default function NotFoundPage() {
-    let [lastSencond,setLastSecond] = useState(GOBACK_SECONDS);
     let history = useHistory();
+    let [lastSencond,setLastSecond] = useState(GOBACK_SECONDS);
 
+  
     let [,paceSetter] = useTopPace();
     let timer = ()=>{
         let interval = setInterval(()=>{

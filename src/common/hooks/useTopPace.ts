@@ -4,11 +4,11 @@ import useRestorable from './useRestorable'
 export type PercentSetter = (percent: number) => Promise<unknown>;
 export type PercentGetter = () => number;
 export default function (): [PercentGetter, PercentSetter] {
-    const setter = topPace.updateProgress;
-    const getter = topPace.getPercent;
+    const setter = topPace.percentSetterAnimated;
+    const getter = topPace.percentGetter;
     useRestorable(() => {
         return () => {
-            setter(0);
+            topPace.percentSetter(-1);
         }
     });
     return [getter, setter];

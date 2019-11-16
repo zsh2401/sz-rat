@@ -4,7 +4,7 @@ import * as topPace from '../../common/view-helper/top-pace'
 import contentLoader from './content-loader';
 class AppLoader {
     public async run() {
-        await topPace.initGlobalPace();
+        await topPace.init(document.querySelector("#__global-pace") as HTMLDivElement);
         await this.installSWIfNeed();
         await this.loadLib();
         if(thereIsHomePage()){
@@ -27,18 +27,25 @@ class AppLoader {
         for (let i = 0; i < contents.length; i++) {
             let crt = contents[i];
             await contentLoader(crt);
-            topPace.updateProgress(topPace.getPercent() + everyStepPercent);
+            this.percent = this.percent + everyStepPercent;
         }
     }
     @percentSpan(null, 100)
     private async loadApp() {
-        await import(/*webpackChunkName:"app"*/"../App")
+        try{
+            await import(/*webpackChunkName:"app"*/"../App")
+        }catch(err){
+            console.error(err);
+        }
     }
     private get percent() {
-        return topPace.getPercent();
+        return topPace.percentGetter();
+    }
+    private async setPercentAsync(value:number){
+        topPace.percentSetterAnimated(value);
     }
     private set percent(value: number) {
-        topPace.updateProgress(value);
+        topPace.percentSetterAnimated(value);
     }
 }
 new AppLoader().run();
@@ -50,8 +57,13 @@ function percentSpan(startPercent: number | null, finishedPercent: number) {
             if (startPercent) {
                 target.percent = startPercent;
             }
-            let ret = await raw.apply(target, args);
-            target.percent = finishedPercent;
+            let ret:any;
+            try{
+                ret = await raw.apply(target, args);
+            }catch(err){
+                throw err;
+            }
+            await target.setPercentAsync(finishedPercent);
             return ret;
         }
     }
