@@ -8,8 +8,7 @@ const GOBACK_SECONDS = 10;
 export default function NotFoundPage() {
     let [lastSencond,setLastSecond] = useState(GOBACK_SECONDS);
     let history = useHistory();
-   
-    console.log( history);
+
     let [,paceSetter] = useTopPace();
     let timer = ()=>{
         let interval = setInterval(()=>{

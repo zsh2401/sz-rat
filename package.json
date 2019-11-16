@@ -31,15 +31,16 @@
     "@types/react-dom": "^16.9.3",
     "@types/react-loadable": "^5.5.2",
     "@types/react-router-dom": "^5.1.0",
-    "@types/styled-components": "^4.4.0",
+    "@types/uglifyjs-webpack-plugin": "^1.1.0",
     "@types/webpack": "^4.39.5",
-    "@webpack-cli/init": "^0.2.2",
+    "@types/webpack-bundle-analyzer": "^2.13.3",
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
+    "ejs-loader": "^0.3.5",
     "file-loader": "^4.2.0",
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
@@ -62,15 +63,12 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "ejs-loader": "^0.3.5",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "offline-plugin": "^5.0.7",
-    "pace": "^0.0.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "react-use": "^13.8.0",
-    "styled-components": "^4.4.1"
+    "react-use": "^13.8.0"
   }
 }

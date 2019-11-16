@@ -8,8 +8,10 @@
     "jsx": "react",
     "resolveJsonModule": true,
     "strictNullChecks": true,
+    "experimentalDecorators":true,
     "strictBindCallApply": true,
     "noImplicitAny": true,
+    "noImplicitReturns":true,
     "allowSyntheticDefaultImports":true
   },
   "include": ["./src/*"],

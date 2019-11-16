@@ -6,6 +6,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+import em from './external-manager'
 const config : webpack.Configuration =  {
 	entry:{
 		apploader:path.resolve(__dirname,'../src/app/app-loader'),
@@ -17,10 +18,8 @@ const config : webpack.Configuration =  {
 		chunkFilename: 'js/[name].chunk.[hash].js',
 		path: path.resolve(__dirname, '../dist')
 	},
-	externals:{
-		"react":"React",
-		"react-dom":'ReactDOM'
-	},
+	externals:em.externals,
+
 	module: {
 		rules: [
 			{test: /\.(ts|tsx)?$/,loader: 'awesome-typescript-loader'},
@@ -55,6 +54,9 @@ const config : webpack.Configuration =  {
 
 	plugins: [
 		new webpack.ProgressPlugin(), 
+		new webpack.DefinePlugin({
+			"___CONTENT_URLS":JSON.stringify(em.urls)
+		}),
 		new HtmlWebpackPlugin({
 			template:path.resolve(__dirname,"../src/app/AppPage.ejs"),
 			minify: { // 压缩HTML文件
@@ -67,6 +69,11 @@ const config : webpack.Configuration =  {
 		new HtmlWebpackPlugin({
 			filename:"404.html",
 			title:"404redictor",
+			minify: { // 压缩HTML文件
+				removeComments: true, // 移除HTML中的注释
+				collapseWhitespace: true, // 删除空白符与换行符
+				minifyCSS: true// 压缩内联css
+			},
 			chunks:["404"]
 		}),
 		new CopyWebpackPlugin([
@@ -84,14 +91,15 @@ const config : webpack.Configuration =  {
 			},
 		]),
 		new CleanWebpackPlugin(),
-		// new BundleAnalyzerPlugin(),
+		// new BundleAnalyzerPlugin({
+		// 	analyzerMode:"static"
+		// }),
 		new OfflinePlugin({
 			caches:"all",
-			// externals:helper.CDN_RES
+			externals:em.urls
 		})
 	],
 
-	
 	optimization: {
 		minimizer:[
 			new UglifyJsPlugin({
@@ -112,7 +120,7 @@ const config : webpack.Configuration =  {
 			name: true,
 			chunks: 'async',
 			minChunks: 1,
-			minSize: 300000,
+			minSize: 1000000,
 			maxSize:0
 		}
 	},
