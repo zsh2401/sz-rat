@@ -1,10 +1,10 @@
-import useRestorable from "./useRestorable";
+import { useEffect } from "react";
 export default function useTitle(title:string){
-    useRestorable(()=>{
+    useEffect(()=>{
         let lastTitle = document.title;
         document.title = title;
         return ()=>{
             document.title = lastTitle;
         }
-    });
+    },[]);
 }
