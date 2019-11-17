@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Template, BilibiliVideo } from '../../components/';
 import SZRatInfo from '../../components/SZRatInfo';
 import { useTopPace } from '../../../common/hooks';
-import { useHistory } from 'react-router';
-import ResponsiveRatioWrapper from '../../components/ResponsiveRatioWrapper';
 export default function IndexPage() {
   let [getter, setter] = useTopPace();
   const clicker = () => {
