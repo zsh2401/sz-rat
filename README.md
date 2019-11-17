@@ -1,32 +1,36 @@
-# SZ-RAT
-#### **S**eymour **Z**hang's **R**eact **A**pplication **T**emplate   
-Make your web application development easier and faster!   
-Build your responsive,fast,useful and GREAT application for everyone!
+
+<img style="margin-left:auto;margin-right:auto;display:block" src="http://sz-rat.zsh2401.top/favicon.ico">
+
+<div style="text-align:center">
+
+### **S**eymour **Z**hang's
+# **R**eact **A**pplication **T**emplate   
+
+[View demo online](https://sz-rat.zsh2401.top)
+</div>
+
+Make your web application development easier and faster!
 
 ![](http://img.shields.io/travis/zsh2401/sz-rat.svg)
 ![](https://img.shields.io/node/v/webpack)
 ![](https://img.shields.io/github/languages/code-size/zsh2401/sz-rat)
 ![](https://img.shields.io/badge/license-MIT-green)
 ![](https://img.shields.io/github/package-json/v/zsh2401/sz-rat)
-# Online Demo
-[sz-rat.zsh2401.top](https://sz-rat.zsh2401.top)
-<!-- # Default Deploy Targets
-static pages server,like GH-PAGES,CODING-PAGES -->
 # Features
-√ SPA + PWA Supported   
-√ Responsive Supported     
-√ Useful light tools   
-√ Type check  
-√ LodableComponent   
-√ TS+Dynamically import supported   
-√ Very quickly fast screen   
-√ Static Pages Server supported
+√ SPA + PWA Supported  
+√ Use TypeScript totally   
+√ Responsive Design Supported     
+√ Useful light tools
+√ Useful light components  
+√ LodableComponent (based on Dynamic Imports)    
+√ Very quickly first screen   
+√ Create for Static Pages Service
 # Todo
-- Dynamically import
-- Top Load Progress Bar
-- Squeeze the size of vendor to below 200KB 
-- Optimize the package speed
-- Try to add pollify(Removable)
+- [√] Dynamically import   
+- [√]Top Load Progress Bar   
+- [√] Squeeze the size of vendor to below 200KB    
+- [√] Optimize the package speed    
+- [×] Try to add pollify(Removable)
 # Fx&Libs
 * React + React Router
 * webpack
