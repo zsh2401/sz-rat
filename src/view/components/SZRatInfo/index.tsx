@@ -7,7 +7,7 @@ const highLight: React.CSSProperties = {
 }
 export default function () {
   return <div>
-    <img className="img-fluid d-block ml-auto mr-auto" src={require("../../../app/icon/icon.png")}></img>
+    <img className="img-fluid d-block ml-auto mr-auto" style={{width:"100px"}} src={require("../../../app/icon/icon.png")}></img>
     <h4 className="text-center">
       <span style={highLight}>S</span>eymour
       <span style={highLight}> Z</span>hang's
