@@ -27,7 +27,7 @@ Make your web application development easier and faster!
 √ Create for Static Pages Service
 # Todo
 - [√] Dynamically import   
-- [√]Top Load Progress Bar   
+- [√]Top Load Progress Bar   `
 - [√] Squeeze the size of vendor to below 200KB    
 - [√] Optimize the package speed    
 - [×] Try to add pollify(Removable)
