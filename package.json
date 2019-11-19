@@ -1,8 +1,8 @@
 {
   "name": "sz-rat-app",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "sz_rat": {
-    "version": "0.6.5",
+    "version": "0.6.6",
     "vname":"Lee",
     "description":"Seymour Zhang's React Application Template",
     "repo":"https://github.com/zsh2401/sz-rat"
