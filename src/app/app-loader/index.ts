@@ -1,7 +1,7 @@
 // console.log("wtf");
 import OfflinePluginRuntime from 'offline-plugin/runtime'
 import * as topPace from '../../common/view-helper/top-pace'
-import contentLoader from './content-loader';
+import externalLoader from '../../common/external-loader';
 class AppLoader {
     public async run() {
         await topPace.init(document.querySelector("#__global-pace") as HTMLDivElement);
@@ -12,13 +12,13 @@ class AppLoader {
         }
         await this.loadApp();
     }
-    @percentSpan(5, 10)
+    // @percentSpan(5, 10)
     private async installSWIfNeed() {
         if (process.env.NODE_ENV === "production") {
             OfflinePluginRuntime.install();
         }
     }
-    @percentSpan(20, 80)
+    // @percentSpan(20, 80)
     private async loadLib() {
         //@ts-ignore
         const contents: string[] = ___CONTENT_URLS;
@@ -26,11 +26,11 @@ class AppLoader {
         const everyStepPercent = parseInt(((percentSpan[1] - percentSpan[0]) * 1.0 * (1.0 / contents.length)).toFixed(0));
         for (let i = 0; i < contents.length; i++) {
             let crt = contents[i];
-            await contentLoader(crt);
-            this.percent = this.percent + everyStepPercent;
+            await externalLoader(crt);
+            // this.percent = this.percent + everyStepPercent;
         }
     }
-    @percentSpan(null, 100)
+    // @percentSpan(null, 100)
     private async loadApp() {
         try{
             await import(/*webpackChunkName:"app"*/"../App")
