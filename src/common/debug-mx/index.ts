@@ -2,18 +2,25 @@
  * Provides some useful debug information
  * 
  */
+import packageInfo from "../../../package.json";
+
 const DEV_STR = "development"
 const PROD_STR = "production"
-function isDev():boolean{
+function isDev(): boolean {
     return process.env.NODE_ENV !== PROD_STR;
 }
-import packageInfo from "../../../package.json";
+export function getRawPkgInfo(): any {
+    return packageInfo;
+}
 export default {
-    IS_DEV : isDev(),
-    VERSION_NAME : packageInfo.version,
-    PKG_NAME :packageInfo.name,
+    IS_DEV: isDev(),
+    VERSION: packageInfo.version,
+    NAME: packageInfo.name,
     DESC: packageInfo.description,
-    SZ_RAT_VERSION : packageInfo["sz-rat"].version,
-    PKG_INFO : packageInfo,
-    AUTHOR:packageInfo.author
+    AUTHOR: packageInfo.author,
+    SZ_RAT_VERSION: packageInfo.sz_rat.version,
+    SZ_RAT_VNAME: packageInfo.sz_rat.vname,
+    SZ_RAT_DESC: packageInfo.sz_rat.description,
+    SZ_RAT_REPO: packageInfo.sz_rat.repo,
+    SZ_RAT_AUTHOR: "zsh2401",
 }

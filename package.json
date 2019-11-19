@@ -1,15 +1,16 @@
 {
-  "name": "sz-rat",
+  "name": "sz-rat-app",
   "version": "0.6.4",
-  "sz-rat": {
-    "version": "0.6.4"
+  "sz_rat": {
+    "version": "0.6.4",
+    "vname":"Lee",
+    "description":"Seymour Zhang's React Application Template",
+    "repo":"https://github.com/zsh2401/sz-rat"
   },
-  "description": "Seymour Zhang's React Application template",
-  "main": "src/app/App.ts",
+  "description": "An application based powered by sz-rat",
+  "main": "./scripts/server",
   "scripts": {
-    "server": "ts-node --project ./scripts/server/tsconfig.json  ./scripts/server",
-    "bs": "concurrently \"yarn build\" \"yarn server\"",
-    "bd": "concurrently \"yarn build\" \"yarn deploy\"",
+    "serv": "ts-node --project ./scripts/server/tsconfig.json  ./scripts/server",
     "deploy": "node ./scripts/deploy.js",
     "build": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.prod.ts",
     "build:dev": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.dev.ts",
@@ -17,8 +18,8 @@
     "start:prod": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.prod.ts"
   },
   "keywords": [
-    "template",
     "react",
+    "react-router",
     "SPA",
     "PWA"
   ],
