@@ -8,11 +8,14 @@ export default function IndexPage() {
     setter(getter() + 10);
   }
 
-  return <Template childrenWrapperClassName="container">
-    <SZRatInfo />
-    <br/>
-    <button className="btn btn-light d-block mr-auto ml-auto" onClick={clicker}>Top Pace Demo</button>
-    <br/>
-    <BilibiliVideo style={{ maxWidth: "400px" }} className="mr-auto ml-auto w-100" src="//player.bilibili.com/player.html?aid=67214844&cid=116546077&page=1" />
+  return <Template className="bg-dark text-white" responsiveContainer navbar footer>
+    <div className="h-100 w-100 bg-dark">
+      <SZRatInfo />
+      <br />
+      <button className="btn btn-light d-block mr-auto ml-auto" onClick={clicker}>Top Pace Demo</button>
+      <br />
+      <BilibiliVideo style={{ maxWidth: "400px" }} className="mr-auto ml-auto w-100" src="//player.bilibili.com/player.html?aid=67214844&cid=116546077&page=1" />
+    </div>
+
   </Template>
 }

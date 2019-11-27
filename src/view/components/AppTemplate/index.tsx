@@ -1,20 +1,24 @@
 import React, { HTMLAttributes } from 'react'
 import debugMx from '../../../common/debug-mx';
-export interface IAppTemplateProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement>{
-    childrenWrapperClassName?:string;
+import StdProps from '../../../common/srd-props';
+import NavBar from '../NavBar';
+import Footer from '../Footer';
+export interface IAppTemplateProps extends StdProps {
+    navbar?: boolean;
+    footer?: boolean;
+    responsiveContainer?: boolean;
 }
-export default function(props:IAppTemplateProps){
-    let {childrenWrapperClassName,...outerAttr} = props;
-    return <div {...outerAttr}>
-        <div className="w-100 h-100 d-flex flex-column">
-            <div className={"flex-grow-1 " + (props.childrenWrapperClassName || "")}>
-                {props.children}
-            </div>
-            <footer className="flex-grow-0">
-                <p className="text-center">
-                    Copyright © 2017 - {new Date().getFullYear()} {debugMx.AUTHOR},All Rights Reserved
-                    <br/>Love Yin For Good</p>
-            </footer>
-        </div>
+const DEFAULT_OUTER_CLASS_NAME = "h-100 w-100 d-flex flex-column";
+export default function (props: IAppTemplateProps) {
+    const { navbar, footer, responsiveContainer, className, children, ...attr } = props;
+    const outerClassName = `${DEFAULT_OUTER_CLASS_NAME} ${className}`
+    const containerClassName = responsiveContainer ? "container" : null;
+
+    return <div className={outerClassName} {...attr}>
+        {navbar ? <NavBar className="flex-grow-0" /> : null}
+
+        <div className={`flex-grow-1 d-flex flex-column align-items-stretch ${containerClassName}`}>{children}</div>
+
+        {navbar ? <Footer className="flex-grow-0" /> : null}
     </div>
 }

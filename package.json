@@ -1,11 +1,11 @@
 {
   "name": "sz-rat-app",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "sz_rat": {
-    "version": "0.6.6",
-    "vname":"Lee",
-    "description":"Seymour Zhang's React Application Template",
-    "repo":"https://github.com/zsh2401/sz-rat"
+    "version": "0.7.0",
+    "vname": "Lee",
+    "description": "Seymour Zhang's React Application Template",
+    "repo": "https://github.com/zsh2401/sz-rat"
   },
   "description": "An application based powered by sz-rat",
   "main": "./scripts/server",
@@ -53,6 +53,7 @@
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
     "node-sass": "^4.12.0",
     "popper.js": "^1.16.0",
     "sass-loader": "^8.0.0",

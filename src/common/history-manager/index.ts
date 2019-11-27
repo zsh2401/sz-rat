@@ -11,7 +11,6 @@ export async function init(){
     }catch(err){
         historyInstance = createHashHistory();
     }
-   
 }
 function get(){
     if(!historyInstance)historyInstance = createHashHistory();
