@@ -3,12 +3,11 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 const config : webpack.Configuration =  {
 	entry:{
-		apploader:path.resolve(__dirname,'../src/app/app-loader'),
+		apploader:path.resolve(__dirname,'../src/App.ts'),
 		"404":path.resolve(__dirname,'../src/common/404redirector')
 	},
 
@@ -19,8 +18,9 @@ const config : webpack.Configuration =  {
 	},
 	module: {
 		rules: [
-			{test: /\.(ts|tsx)?$/,loader: 'awesome-typescript-loader'},
-
+			{test: /\.(ts|tsx)$/,
+				loader:"awesome-typescript-loader"
+			},
 			{test: /\.(html)$/,
 				loader:"html-loader"
 			},
@@ -52,7 +52,7 @@ const config : webpack.Configuration =  {
 	plugins: [
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
-			template:path.resolve(__dirname,"../src/app/AppPage.ejs"),
+			template:path.resolve(__dirname,"../src/AppPage.ejs"),
 			minify: { // 压缩HTML文件
 				removeComments: true, // 移除HTML中的注释
 				collapseWhitespace: true, // 删除空白符与换行符
@@ -67,17 +67,9 @@ const config : webpack.Configuration =  {
 		}),
 		new CopyWebpackPlugin([
 			{
-				from:path.resolve(__dirname,"../src/assets/public") ,
+				from:path.resolve(__dirname,"../src/public") ,
 				to:path.resolve(__dirname,"../dist")
-			},
-			{
-				from:path.resolve(__dirname,"../src/app/icon/icon.ico") ,
-				to:path.resolve(__dirname,"../dist/favicon.ico")
-			},
-			{
-				from:path.resolve(__dirname,"../src/app/manifest.json") ,
-				to:path.resolve(__dirname,"../dist/manifest.json")
-			},
+			}
 		]),
 		new CleanWebpackPlugin(),
 		// new BundleAnalyzerPlugin(),

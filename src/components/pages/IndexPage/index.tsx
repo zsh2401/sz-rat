@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template, BilibiliVideo } from '../../components/';
-import SZRatInfo from '../../components/SZRatInfo';
+import Layout from '../../sz-ui/Layout'
+import BilibiliVideo from '../../sz-ui/BilibiliVideo';
+import SZRatInfo from '../../sz-ui/SZRatInfo';
 export default function IndexPage(){
-  return <Template childrenWrapperClassName="container">
+  return <Layout childrenWrapperClassName="container">
       <div className="row">
         <div className="col-md-6">
           <SZRatInfo/>
@@ -15,5 +16,5 @@ export default function IndexPage(){
           </div>
         </div>
       </div>
-</Template>
+</Layout>
 }

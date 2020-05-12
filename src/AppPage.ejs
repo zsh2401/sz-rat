@@ -1,8 +1,8 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8"></meta>
-    <title><%=require("../../package.json").name %></title>
-    <meta name="description" content="<%=require("../../package.json").description%>">
+    <title><%=require("../package.json").name %></title>
+    <meta name="description" content="<%=require("../package.json").description%>">
 
     <!-- VIEW -->
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"></meta>
@@ -12,7 +12,7 @@
     <link rel="manifest" href="manifest.json"></link>
 
     <!-- APPLE -->
-    <link rel="apple-touch-icon" sizes="128x128" href=<%= require("!!file-loader!./icon/icon.ico")%>></link>
+    <link rel="apple-touch-icon" sizes="128x128" href=<%= require("!!file-loader!./public/icon.ico")%>></link>
     <meta name="apple-mobile-web-app-capable" content="yes"></meta>
     <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
    
@@ -46,7 +46,7 @@
         <div class="__loading-panel-wrapper">
             <div class="__loading-panel-inner">
                 <div>
-                    <img class="__loading-icon" src="<%= require("./icon/icon.png")%>"></img>
+                    <img class="__loading-icon" src="<%= require("./public/icon.png")%>"></img>
                 </div>
             </div>
         </div>

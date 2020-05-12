@@ -1,7 +1,7 @@
 import React from 'react';
-import historyManager from '../common/history-manager';
+import historyManager from './common/history-manager';
 import { Router, Route, Switch } from 'react-router';
-import {IndexPage, NotFoundPage} from '../view/pages';
+import {IndexPage, NotFoundPage} from './components/pages';
 
 // 应用路由器
 export default ()=>(

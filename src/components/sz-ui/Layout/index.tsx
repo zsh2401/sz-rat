@@ -1,8 +1,12 @@
 import React, { HTMLAttributes } from 'react'
-export interface IAppTemplateProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement>{
+export interface ILayoutProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement>{
     childrenWrapperClassName?:string;
+    navbar?:boolean;
+    footer?:boolean;
+    std?:boolean;
+    container?:boolean;
 }
-export default function(props:IAppTemplateProps){
+export default function(props:ILayoutProps){
     let {childrenWrapperClassName,...outerAttr} = props;
     return <div {...outerAttr}>
         <div className="w-100 h-100 d-flex flex-column">

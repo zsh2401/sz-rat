@@ -1,18 +1,18 @@
 {
   "name": "sz-rat",
-  "version": "0.6",
-  "sz-rat":{
-      "version":"0.6"
+  "version": "0.7",
+  "sz-rat": {
+    "version": "0.7",
+    "versionName": "U235"
   },
   "description": "Seymour Zhang's React Application template",
   "main": "src/app/App.ts",
   "scripts": {
-    "bd": "concurrently \"yarn build\" \"yarn deploy\"",
     "deploy": "node ./scripts/deploy.js",
     "build": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.prod.ts",
     "build:dev": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.dev.ts",
-    "start": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.dev.ts",
-    "start:prod": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.prod.ts"
+    "dev": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.dev.ts",
+    "dev:prod": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.prod.ts"
   },
   "keywords": [
     "template",
@@ -43,9 +43,7 @@
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.12.0",
     "popper.js": "^1.16.0",
-    "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.4.1",
