@@ -1,15 +1,20 @@
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8"></meta>
     <title><%=require("../package.json").name %></title>
     <meta name="description" content="<%=require("../package.json").description%>">
 
     <!-- VIEW -->
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"></meta>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
-  
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    </meta>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </meta>
+
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json"></link>
+    <link rel="manifest" href="manifest.json">
+    </link>
 
     <!-- APPLE -->
     <link rel="apple-touch-icon" sizes="128x128" href=<%= require("!!file-loader!./public/icon.ico")%>></link>
@@ -17,22 +22,40 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
    
     <style type="text/css">
-        *{padding: 0px;margin: 0px;}
-        html{ width: 100%;height: 100%;}
-        body{ width: 100%; height: 100%;}
-        #app{height: 100%;width: 100%;}
-        .__loading-panel-wrapper{
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #app {
+            height: 100%;
+            width: 100%;
+        }
+
+        .__loading-panel-wrapper {
             width: 100%;
             height: 100%;
             flex-direction: column;
             display: flex;
             justify-content: center;
         }
-        .__loading-panel-inner{
+
+        .__loading-panel-inner {
             display: flex;
             justify-content: center;
         }
-        .__loading-icon{
+
+        .__loading-icon {
             width: 150px;
             display: block;
             margin-left: auto;
@@ -40,6 +63,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="__global-pace"></div>
     <div id="app">
@@ -52,4 +76,5 @@
         </div>
     </div>
 </body>
+
 </html>

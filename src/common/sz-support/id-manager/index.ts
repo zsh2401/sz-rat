@@ -1,4 +1,3 @@
-import objectKeeper from "../object-keeper";
 export type Id = string;
 export interface IdRecorder{
     [key:string]:boolean;
@@ -8,6 +7,7 @@ export default {
     free,
     readAll,
 }
+const records = new Array<Id>();
 function readAll():Array<Id>{
     return _getRecordArray()
 }
@@ -28,9 +28,7 @@ function _generateId():Id{
     return "__random_tmp_id_" + id;
 }
 function _getRecordArray():Array<Id>{
-    if(!objectKeeper.get<Array<Id>>("id-g-result"))
-        objectKeeper.put("id-g-result",[]);
-    return objectKeeper.get<Array<Id>>("id-g-result");
+    return records;
 }
 function _wasUsed(id:Id):boolean{
     return _getRecordArray().includes(id);

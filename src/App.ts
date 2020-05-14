@@ -6,13 +6,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './Router'
 import "./App.css"
-import OfflinePluginRuntime from 'offline-plugin/runtime'
+import OffliePluginRuntime from 'offline-plugin/runtime'
+import DebugMx from './common/sz-support/debug-mx'
 
-function installSWIfNeed(){
-    if(process.env.NODE_ENV === "production"){
-        OfflinePluginRuntime.install();
+const installSwIfNeed = () => {
+    if (!DebugMx.IS_DEV) {
+        OffliePluginRuntime.install();
     }
 }
-installSWIfNeed();
-ReactDOM.render(React.createElement(Router)
-    ,document.querySelector("#app"));
+installSwIfNeed();
+(async () => {
+    ReactDOM.render(React.createElement(Router)
+        , document.querySelector("#app"));
+})();

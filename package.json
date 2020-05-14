@@ -1,29 +1,35 @@
 {
   "name": "sz-rat",
   "version": "0.7",
-  "sz-rat": {
+  "sz_rat": {
     "version": "0.7",
-    "versionName": "U235"
+    "vname": "U235",
+    "description":"Seymour Zhang's React Application Template",
+    "repo":"https://github.com/zsh2401/sz-rat"
   },
-  "description": "Seymour Zhang's React Application template",
-  "main": "src/app/App.ts",
+  "description": "An application powered by sz-rat",
+  "main": "./scripts/server",
   "scripts": {
     "deploy": "node ./scripts/deploy.js",
     "build": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.prod.ts",
     "build:dev": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.dev.ts",
+    
+    "server":"ts-node ./scripts/server/index.ts",
     "dev": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.dev.ts",
     "dev:prod": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./scripts/webpack.config.prod.ts"
   },
   "keywords": [
-    "template",
     "react",
+    "react-router",
     "SPA",
     "PWA"
   ],
   "author": "zsh2401",
   "license": "MIT",
   "devDependencies": {
+    "@types/connect-history-api-fallback": "^1.3.3",
     "@types/copy-webpack-plugin": "^5.0.0",
+    "@types/express": "^4.17.2",
     "@types/gh-pages": "^2.0.1",
     "@types/html-webpack-plugin": "^3.2.1",
     "@types/lodash": "^4.14.147",
@@ -31,14 +37,19 @@
     "@types/react-dom": "^16.9.3",
     "@types/react-loadable": "^5.5.2",
     "@types/react-router-dom": "^5.1.0",
+    "@types/uglifyjs-webpack-plugin": "^1.1.0",
     "@types/webpack": "^4.39.5",
-    "@webpack-cli/init": "^0.2.2",
+    "@types/webpack-bundle-analyzer": "^2.13.3",
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.0.0",
+    "connect-history-api-fallback": "^1.6.0",
     "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
+    "ejs-loader": "^0.3.5",
+    "express": "^4.17.1",
     "file-loader": "^4.2.0",
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
@@ -59,11 +70,9 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "ejs-loader": "^0.3.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.15",
     "offline-plugin": "^5.0.7",
-    "pace": "^0.0.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
