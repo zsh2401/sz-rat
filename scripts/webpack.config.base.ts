@@ -7,7 +7,7 @@ import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 const config : webpack.Configuration =  {
 	entry:{
-		apploader:path.resolve(__dirname,'../src/App.ts'),
+		app:path.resolve(__dirname,'../src/AppLoader.ts'),
 		"404":path.resolve(__dirname,'../src/common/404redirector')
 	},
 
@@ -63,7 +63,7 @@ const config : webpack.Configuration =  {
 				collapseWhitespace: true, // 删除空白符与换行符
 				minifyCSS: true// 压缩内联css
 			},
-			chunks: ["apploader"]
+			chunks: ["app"]
 		}),
 		new HtmlWebpackPlugin({
 			filename: "404.html",
