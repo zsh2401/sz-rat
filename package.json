@@ -71,7 +71,7 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.5.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "offline-plugin": "^5.0.7",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
