@@ -7,4 +7,3 @@ export default function() {
     ReactDOM.render(React.createElement(Router)
         , document.querySelector("#app"));
 }
-

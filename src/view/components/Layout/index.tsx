@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
-import DebugMx from '../../common/sz-support/debug-mx'
-import IStdProps from '../../common/sz-support/IStdProps'
+import DebugMx from '../../../common/sz-support/debug-mx'
+import IStdProps from '../../../common/sz-support/IStdProps'
 export default function (props: IStdProps) {
     return <div>
         <div className="w-100 h-100 d-flex flex-column">

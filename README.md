@@ -25,12 +25,14 @@ Make your web application development easier and faster!
 √ LodableComponent (based on Dynamic Imports)    
 √ Very quickly first screen   
 √ Create for Static Pages Service
+
 # Todo
 - [√] Dynamically import   
-- [√]Top Load Progress Bar   `
+- [√] Top Load Progress Bar
 - [√] Squeeze the size of vendor to below 200KB    
 - [√] Optimize the package speed    
-- [×] Try to add pollify(Removable)
+- [ ] Try to add pollify(Removable)
+- [ ] Server side render.
 # Fx&Libs
 * React + React Router
 * webpack

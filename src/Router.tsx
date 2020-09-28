@@ -1,8 +1,9 @@
 import React from 'react';
 import useHistory from './common/sz-support/hooks/useHistory';
 import { Router, Route, Switch } from 'react-router';
-import { IndexPage, NotFoundPage } from './components/pages';
-import Layout from './components/Layout';
+import IndexPage from './view/pages/IndexPage';
+import NotFoundPage from './view/pages/NotFoundPage';
+import Layout from './view/components/Layout';
 
 //Application's router
 export default function AppRouter() {
