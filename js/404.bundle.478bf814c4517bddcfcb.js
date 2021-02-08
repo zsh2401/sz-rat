@@ -1,0 +1,1 @@
+(()=>{var o=window.location.pathname,a=window.location.search;window.location.href="/#"+o+a})();
