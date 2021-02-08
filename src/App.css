@@ -1,6 +1,11 @@
 /* Application's global css */
+:global(.text-center){
+    text-align: center;
+}
 :global(*){
     font-family: Microsoft YaHei UI Light,Microsoft YaHei, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 :global(.safe-area){
     width: 100%;

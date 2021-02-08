@@ -9,7 +9,7 @@ function getH(width: number, ratio: [number, number] = [16, 9]): number {
 }
 export default function (props: ResponsiveRatioWrapperProps) {
     let [height, heightSetter] = useState(0);
-    let {ratio,...attr} = props;
+    let { ratio, ...attr } = props;
     let domDiv: HTMLDivElement;
     useEffect(() => {
         const resizer = _.debounce(() => {
@@ -27,7 +27,7 @@ export default function (props: ResponsiveRatioWrapperProps) {
         domDiv = wrapperDiv as HTMLDivElement;
     }
     }>
-        <div className="w-100" style={{ height: height + "px" }}>
+        <div style={{ width: "100%", height: height + "px" }}>
             {props.children}
         </div>
     </div>

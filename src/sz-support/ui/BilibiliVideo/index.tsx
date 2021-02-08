@@ -1,5 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
+//@ts-expect-error
+import css from "./index.css"
 import ResponsiveRatioWrapper from '../ResponsiveRatioWrapper';
 export interface BilibiliVideoProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     src: string;
@@ -10,7 +12,7 @@ export default function(props:BilibiliVideoProps) {
     return <ResponsiveRatioWrapper {...attr}>
         {
             //@ts-ignore
-            <iframe className="w-100 h-100" src={src} scrolling="no" border="0" frameBorder="no" framespacing="0" allowFullScreen></iframe>
+            <iframe className={css.bvideo} src={src} scrolling="no" border="0" frameBorder="no" framespacing="0" allowFullScreen></iframe>
         }
     </ResponsiveRatioWrapper>
 }

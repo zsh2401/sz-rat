@@ -1,20 +1,24 @@
-import React, { HTMLAttributes } from 'react'
-import DebugMx from '../../../common/sz-support/debug-mx'
-import IStdProps from '../../../common/sz-support/IStdProps'
+import React from 'react'
+import DebugMx from '../../../common/debug-mx'
+import IStdProps from '../../../sz-support/common/IStdProps'
+//@ts-expect-error
+import css from "./index.css"
 export default function (props: IStdProps) {
     return <div>
-        <div className="w-100 h-100 d-flex flex-column">
-            <div className={"flex-grow-0 container"}>
+        <div className={css.layout}>
+            <div className={css.header}>
+                There's Header
                 <h2> {DebugMx.NAME}</h2>
                 <p>{DebugMx.DESC}</p>
             </div>
 
-            <div className={"flex-grow-1 container"}>
+            <div className={css.body}>
                 {props.children}
             </div>
 
-            <footer className="flex-grow-0">
-                <p className="text-center">
+            <footer className={css.footer}>
+                There's Footer
+                <p>
                     Copyright © 2019 - {new Date().getFullYear()} {DebugMx.AUTHOR},All Rights Reserved
                 </p>
             </footer>

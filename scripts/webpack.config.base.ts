@@ -8,7 +8,7 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 const config: webpack.Configuration = {
 	entry: {
 		app: path.resolve(__dirname, '../src/AppLoader.ts'),
-		"404": path.resolve(__dirname, '../src/common/404redirector')
+		"404": path.resolve(__dirname, '../src/404redirector.ts')
 	},
 
 	output: {
@@ -79,7 +79,7 @@ const config: webpack.Configuration = {
 		new CopyWebpackPlugin({
 			patterns: [
 				{
-					from: path.resolve(__dirname, "../src/public"),
+					from: path.resolve(__dirname, "../public"),
 					to: path.resolve(__dirname, "../dist")
 				}
 			]
@@ -88,19 +88,19 @@ const config: webpack.Configuration = {
 		// new BundleAnalyzerPlugin({
 		// 	analyzerMode:"static"
 		// }),
-		new OfflinePlugin({
-			caches: "all"
-		})
+		// new OfflinePlugin({
+		// 	caches: "all",
+		// })
 	],
 
 	optimization: {
-		minimizer: [
-			new UglifyJsPlugin({
-				uglifyOptions: {
-					compress: true
-				}
-			})
-		],
+		// minimizer: [
+		// 	new UglifyJsPlugin({
+		// 		uglifyOptions: {
+		// 			compress: true
+		// 		}
+		// 	})
+		// ],
 		splitChunks: {
 			cacheGroups: {
 				// vendors: {
@@ -110,16 +110,18 @@ const config: webpack.Configuration = {
 				// 	test: /[\\/]node_modules[\\/]/
 				// },
 			},
-			name: true,
+			// name: true,
 			chunks: 'async',
-			minChunks: 1,
-			minSize: 1000000,
-			maxSize: 0
+			minSize: 20000,
+			minRemainingSize: 0,
+			// maxSize: 0,
+			// maxSize: 
 		}
 	},
 
 	//@ts-ignore
 	devServer: {
+		contentBase: path.join(__dirname, '../dist'),
 		open: false,
 		host: "0.0.0.0",
 		port: 5000,

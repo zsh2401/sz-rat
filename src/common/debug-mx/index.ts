@@ -1,7 +1,7 @@
 /**
  * Provides a serials of debug tools
  */
-import packageInfo from "../../../../package.json";
+import packageInfo from "../../../package.json";
 
 const DEV_STR = "development"
 const PROD_STR = "production"

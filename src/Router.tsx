@@ -1,5 +1,5 @@
 import React from 'react';
-import useHistory from './common/sz-support/hooks/useHistory';
+import useHistory from './sz-support/common/hooks/useHistory';
 import { Router, Route, Switch } from 'react-router';
 import IndexPage from './view/pages/IndexPage';
 import NotFoundPage from './view/pages/NotFoundPage';
