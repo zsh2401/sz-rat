@@ -85,12 +85,18 @@ const config: webpack.Configuration = {
 			]
 		}),
 		new CleanWebpackPlugin(),
+		
 		// new BundleAnalyzerPlugin({
 		// 	analyzerMode:"static"
 		// }),
 		// new OfflinePlugin({
 		// 	caches: "all",
-		// })
+		// }),
+
+		//https://stackoverflow.com/questions/65018431/webpack-5-uncaught-referenceerror-process-is-not-defined
+		new webpack.ProvidePlugin({
+			process: 'process/browser',
+		})
 	],
 
 	optimization: {
