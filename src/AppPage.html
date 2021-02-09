@@ -18,7 +18,7 @@
     </link>
 
     <!-- APPLE -->
-    <link rel="apple-touch-icon" sizes="128x128" href="/public/icon.ico">
+    <link rel="apple-touch-icon" sizes="128x128" href="/icon.ico">
     </link>
     <meta name="apple-mobile-web-app-capable" content="yes">
     </meta>
@@ -27,7 +27,38 @@
 
 <body>
     <div id="app">
-        <h1>Loading</h1>
+        <div class="loading-wrapper">
+            <div class="loading-inner">
+                <div class="loading-icon-wrapper"">
+                    <img class="loading-icon" src="/icon.ico"></img>
+                </div>
+                <h1>Seymour Zhang's React Application</h1>
+            </div>
+        </div>
+
+        <style>
+            .loading-icon-wrapper{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .loading-icon{
+                max-height: 140px;
+                max-width: 140px;
+            }
+            .loading-wrapper {
+                display: flex;
+                height: 100%;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .loading-inner{
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        </style>
     </div>
 </body>
 

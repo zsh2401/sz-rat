@@ -1,7 +1,7 @@
 import nProgress from 'nprogress';
 import React from 'react'
 import { IStdProps, useAsyncState } from '../../common';
-
+import DefaultLoading from "./DefaultLoading"
 export interface LoadableComponentProps extends IStdProps {
 
     loader: () => Promise<React.ReactElement>;
@@ -14,15 +14,18 @@ export interface LoadableComponentProps extends IStdProps {
 }
 
 export default function (props: LoadableComponentProps) {
-    const [content,] = useAsyncState<React.ReactElement>({
-        initialState: props.loading ?? <div>Loading</div>,
+
+    const { state: content } = useAsyncState<React.ReactElement>({
+        initialState: props.loading ?? <DefaultLoading />,
         real: async () => {
             try {
                 if (props.displayProgress) {
                     nProgress.start();
                 }
                 return await props.loader();
-            } catch {
+            } catch (err: any) {
+                console.error("Could not load async component");
+                console.error(err);
                 return props.error ?? <div>Error</div>;
             } finally {
                 if (props.displayProgress) {
@@ -31,7 +34,9 @@ export default function (props: LoadableComponentProps) {
             }
         },
     });
+
     return <div>
         {content}
     </div>
 }
+

@@ -1,45 +1,81 @@
 import { useState, useEffect } from "react"
-import debugMx from "../../../common/debug-mx";
-type LoadingState = "loading" | "loaded" | "error";
-export interface DataProvider<TData> {
-    (): Promise<TData>;
+import debugMx from "../debug-mx";
+export enum Status {
+    "pending",
+    "resolved",
+    "rejected"
+}
+export interface StateAsyncProvider<S> {
+    (): Promise<S>;
 }
 export interface Recaller {
     (): void;
 }
-export interface StateSetter<TData> {
-    (newData: TData): void;
+export interface StateSetter<S> {
+    (newState: S): void;
 }
-export interface UseAsyncStateOptions<TData> {
-    initialState?: TData | (() => TData);
-    real?: DataProvider<TData>;
-    fake?: DataProvider<TData>;
+export interface UseAsyncStateOptions<S> {
+    initialState: S;
+    real?: StateAsyncProvider<S>;
+    fake?: StateAsyncProvider<S>;
     onError?: (reason: any) => void;
     shouldFake?: boolean | (() => boolean);
 }
+export interface ReturnValue<S> {
+    state: S;
+    loadingStatus: Status;
+    recaller: Recaller;
+    setter: StateSetter<S>;
+    promise: Promise<S>;
+}
+// export type ReturnValue<S> = [S, Status, Recaller, StateSetter<S>, Promise<S>];
+export default function useAsyncState<S>(options: UseAsyncStateOptions<S>):
+    ReturnValue<S> {
 
-export default function useAsyncState<S>(options: UseAsyncStateOptions<S>): [S, LoadingState, Recaller, StateSetter<S>] {
+    const [state, stateSetter] = useState<S>(options.initialState);
 
-    const [value, valueSetter] = useState<S | any>(options.initialState);
-    const [state, stateSetter] = useState<LoadingState>("loading");
+    const [status, statusSetter] = useState<Status>(Status.pending);
+
+    let promiseResove: (a: S) => void;
+    let promiseReject: (r: any) => void;
+    const promise = new Promise<S>((a, b) => {
+        a = promiseResove;
+        b = promiseReject;
+    });
+
+    const resolve = (data: S) => {
+        stateSetter(data);
+        statusSetter(Status.resolved);
+        promiseResove(data);
+    }
+    const reject = (reason: any) => {
+        options.onError && options.onError(reason);
+        statusSetter(Status.rejected);
+        promiseReject(reason);
+    }
 
     const fn = async () => {
         try {
             const data = await findProvider(options)();
-            valueSetter(data);
-            stateSetter("loaded");
+            resolve(data);
         } catch (err) {
-            options.onError && options.onError(err);
-            stateSetter("error");
+            reject(err);
         }
     };
+
     useEffect(() => {
         fn();
     }, []);
 
-    return [value, state, fn, valueSetter];
+    return {
+        state,
+        loadingStatus: status,
+        recaller: fn,
+        promise,
+        setter: stateSetter
+    };
 }
-function findProvider<TData>(options: UseAsyncStateOptions<TData>): DataProvider<TData> {
+function findProvider<TData>(options: UseAsyncStateOptions<TData>): StateAsyncProvider<TData> {
 
     let useFake;
     if (typeof options.shouldFake === "boolean") {

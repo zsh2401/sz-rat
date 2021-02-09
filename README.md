@@ -37,9 +37,9 @@ Make your web application development easier and faster!
 * React + React Router
 * webpack
 * TypeScript
-* Bootstrap4 (Removable)
-* jQuery (Removable)
 * lodash (Removable)
+* Bootstrap4 (Removed)
+* jQuery (Removed)
 
 # DevEnv Requirements
 Node.js >= 10.15.0

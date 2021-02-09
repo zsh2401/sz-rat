@@ -2,8 +2,9 @@
 //Async or sync↓
 import "!!style-loader!css-loader?modules=false!nprogress/nprogress.css"
 import OffliePluginRuntime from 'offline-plugin/runtime'
-import DebugMx from './common/debug-mx'
+import DebugMx from './sz-support/common/debug-mx'
 import nProgress from "nprogress"
+import { sleep } from "./sz-support/common"
 
 
 //Install service worker
@@ -19,6 +20,7 @@ const runApplication = (async () => {
 
 (async () => {
     nProgress.start();
+    await sleep(100);
     await runApplication();
     nProgress.done();
     await installSwIfNeed();

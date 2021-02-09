@@ -10,7 +10,7 @@
   "description": "An application powered by sz-rat",
   "main": "./scripts/server",
   "scripts": {
-    "deploy": "node ./scripts/deploy.js",
+    "deploy": "gh-pages -d dist",
     "build": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.prod.ts",
     "build:dev": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig-for-webpack-config.json\" webpack --config ./scripts/webpack.config.dev.ts",
     "server": "ts-node ./scripts/server/index.ts",
@@ -73,6 +73,7 @@
     "offline-plugin": "^5.0.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-loading": "^2.0.3",
     "react-router-dom": "^5.2.0",
     "react-use": "^17.1.0"
   }
