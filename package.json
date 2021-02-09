@@ -2,7 +2,7 @@
   "name": "sz-rat-app",
   "version": "1.0.0",
   "sz_rat": {
-    "version": "10.12",
+    "version": "10.12.1",
     "vname": "Chrish GL",
     "description": "Seymour Zhang's React Application Template",
     "repo": "https://github.com/zsh2401/sz-rat"
