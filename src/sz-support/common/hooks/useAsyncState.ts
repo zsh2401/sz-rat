@@ -46,12 +46,16 @@ export default function useAsyncState<S>(options: UseAsyncStateOptions<S>):
     const resolve = (data: S) => {
         stateSetter(data);
         statusSetter(Status.resolved);
-        promiseResove(data);
+        try {
+            promiseResove(data);
+        } finally { }
     }
     const reject = (reason: any) => {
         options.onError && options.onError(reason);
         statusSetter(Status.rejected);
-        promiseReject(reason);
+        try {
+            promiseReject(reason);
+        } finally { }
     }
 
     const fn = async () => {
