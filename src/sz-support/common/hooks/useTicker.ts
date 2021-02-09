@@ -14,7 +14,6 @@ export default function(tickCallback:()=>ShouldContinueTick,intervalMs:number=10
             }
         },intervalMs);
         return ()=>{
-            console.log("destory");
             destoryed = true;
         }
     },deps);
