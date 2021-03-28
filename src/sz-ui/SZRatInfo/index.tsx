@@ -3,12 +3,8 @@ import DebugMX from "../../common/debug-mx"
 //@ts-expect-error
 import css from "./index.css"
 export default function () {
-
-  // const [count, countSetter] = useState(0);
-
   return <div className={css.szrat}>
     <div>
-      <button onClick={console.log}>Click</button>
       <img src={require("../../../public/icon.png").default}></img>
       <h1 className="text-center">Seymour Zhang's React Application Template</h1>
       <p className="text-center">v{DebugMX.SZ_RAT_VERSION} {DebugMX.SZ_RAT_VNAME}<br />{DebugMX.SZ_RAT_AUTHOR}</p>

@@ -75,6 +75,7 @@ const config: webpack.Configuration = {
 			},
 			chunks: ["404"]
 		}),
+		//@ts-ignore
 		new CopyWebpackPlugin({
 			patterns: [
 				{
@@ -83,6 +84,7 @@ const config: webpack.Configuration = {
 				}
 			]
 		}),
+		//@ts-ignore
 		new CleanWebpackPlugin(),
 
 		// new BundleAnalyzerPlugin({
