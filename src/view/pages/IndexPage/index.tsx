@@ -1,14 +1,13 @@
 import React from 'react'
-import LC from "../../../sz-support/ui/LodableComponent"
-import { sleep } from '../../../sz-support/common'
+import LodableComponent from "../../../sz-ui/LodableComponent"
 export default function () {
  
   return <div>
-    <LC displayProgress 
-    //@ts-expect-error
+    <LodableComponent displayProgress 
+    //@ts-ignore
     loader={
       async () => {
-        return (await import("../../../sz-support/ui/SZRatInfo")).default;
+        return (await import("../../../sz-ui/SZRatInfo")).default;
       }}
     />
   </div>

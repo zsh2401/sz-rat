@@ -1,26 +1,22 @@
-import React from 'react';
-import useHistory from './sz-support/common/hooks/useHistory';
+import React, { useContext, useState } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import IndexPage from './view/pages/IndexPage';
 import NotFoundPage from './view/pages/NotFoundPage';
 import Layout from './view/components/Layout';
-import { KeepAlive, Provider } from "react-keep-alive"
-//Application's router
+import AppContext from "./AppContext"
+import { createHashHistory } from "history"
 export default function AppRouter() {
-    return <Layout>
-        <Router history={useHistory()}>
-            <Provider>
-
-
+    const [history] = useState(() => createHashHistory());
+    return <AppContext.Provider value={{
+        history
+    }}>
+        <Layout>
+            <Router history={useContext(AppContext).history}>
                 <Switch>
-                    <Route exact path="/" component={() =>
-                        <KeepAlive name="key">
-                            <IndexPage />
-                        </KeepAlive>}>
-                    </Route>
+                    <Route exact path="/" component={IndexPage}></Route>
                     <Route path="*" component={NotFoundPage}></Route>
                 </Switch>
-            </Provider>
-        </Router>
-    </Layout>
+            </Router>
+        </Layout>
+    </AppContext.Provider>
 }

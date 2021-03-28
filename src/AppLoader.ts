@@ -1,28 +1,34 @@
-//Load dependencies in some way.
-//Async or sync↓
 import "!!style-loader!css-loader?modules=false!nprogress/nprogress.css"
-import OffliePluginRuntime from 'offline-plugin/runtime'
-import DebugMx from './sz-support/common/debug-mx'
 import nProgress from "nprogress"
-import { sleep } from "./sz-support/common"
 
 
-//Install service worker
-const installSwIfNeed = async () => {
-    if (!DebugMx.IS_DEV) {
-        OffliePluginRuntime.install();
+/**
+ * entry point
+ */
+main();
+
+
+
+async function main() {
+    nProgress.start();
+    await downloadAndRunApplication();
+    nProgress.done();
+    await registerServiceWorker();
+}
+
+async function registerServiceWorker() {
+    try {
+        console.log("Registering Service Worker.");
+        const registration = await navigator.serviceWorker.register("./service-worker.js")
+        console.log("Service Worker has been registered. " + registration);
+    } catch (err) {
+        console.log("Service Worker registration failed: ", err)
     }
 }
-const runApplication = (async () => {
+
+async function downloadAndRunApplication() {
     const app = await import("./App");
     app.default();
-});
+}
 
-(async () => {
-    nProgress.start();
-    await sleep(100);
-    await runApplication();
-    nProgress.done();
-    await installSwIfNeed();
-})();
 

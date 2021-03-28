@@ -1,6 +1,6 @@
 import nProgress from 'nprogress';
 import React from 'react'
-import { IStdProps, useAsyncState } from '../../common';
+import { IStdProps, useAsyncState } from 'sz-react-support';
 import DefaultLoading from "./DefaultLoading"
 export interface LoadableComponentProps extends IStdProps {
 
@@ -17,7 +17,7 @@ export default function (props: LoadableComponentProps) {
 
     const { state: content } = useAsyncState<React.ReactElement>({
         initialState: props.loading ?? <DefaultLoading />,
-        real: async () => {
+        provider: async () => {
             try {
                 if (props.displayProgress) {
                     nProgress.start();

@@ -1,6 +1,5 @@
 import React from 'react'
-import DebugMx from '../../../sz-support/common/debug-mx'
-import IStdProps from '../../../sz-support/common/IStdProps'
+import { IStdProps } from 'sz-react-support'
 import Header from "./Header"
 import Footer from "./Footer"
 //@ts-expect-error

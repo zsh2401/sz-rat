@@ -15,6 +15,6 @@
     "noImplicitReturns":true,
     "allowSyntheticDefaultImports":true
   },
-  "include": ["./src/*", "src/app/server.ts"],
+  "include": ["./src/*", "src/app/server.ts", "src/common/debug-mx"],
   "exclude": ["node_modules"]
 }

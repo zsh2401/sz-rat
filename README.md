@@ -1,73 +1,81 @@
 
-<img style="margin-left:auto;margin-right:auto;display:block" src="http://sz-rat.zsh2401.top/favicon.ico">
+
 
 <div style="text-align:center">
+
+![](./public/icon.ico)
 
 ### **S**eymour **Z**hang's
 # **R**eact **A**pplication **T**emplate   
 
-[View demo online](https://sz-rat.zsh2401.top)
-</div>
+```sh
+git clone https://github.com/zsh2401/sz-rat
+```
 
-Make your web application development easier and faster!
+[View demo online](https://sz-rat.zsh2401.top)
+
+Make your react web application development easier and faster!
 
 ![](http://img.shields.io/travis/zsh2401/sz-rat.svg)
 ![](https://img.shields.io/node/v/webpack)
 ![](https://img.shields.io/github/languages/code-size/zsh2401/sz-rat)
 ![](https://img.shields.io/badge/license-MIT-green)
 ![](https://img.shields.io/github/package-json/v/zsh2401/sz-rat)
-# Features
-√ SPA + PWA Supported  
-√ Use TypeScript totally   
-√ Responsive Design Supported     
-√ Useful light tools
-√ Useful light components  
-√ LodableComponent (based on Dynamic Imports)    
-√ Very quickly first screen   
-√ Create for Static Pages Service
+</div>
 
-# Todo
-- [√] Dynamically import   
+
+# Features✨
+* SPA + PWA Supported  
+* 100% TypeScript   
+* Lightest Framework   
+* LodableComponent (based on Dynamic Imports)    
+* Designed for Static Pages Server
+* No jQuery & Bootstrap
+* Dynamically import   
+* Optimization
+
+# Todo🌵
+- [√] 
 - [√] Top Load Progress Bar
 - [√] Squeeze the size of vendor to below 200KB    
 - [√] Optimize the package speed    
-- [ ] Try to add pollify(Removable)
+<!-- - [ ] Try to add pollify(Removable) -->
 - [ ] Server side render.
+
 # Fx&Libs
 * React + React Router
 * webpack
 * TypeScript
 * lodash (Removable)
-* Bootstrap4 (Removed)
-* jQuery (Removed)
+* ~~Bootstrap4 (Removed)~~
+* ~~jQuery (Removed)~~
 
-# DevEnv Requirements
-Node.js >= 10.15.0
-npm >= 6.4.1
+
 
 # How to run it?
-Install all dependencies first.
-```
-npm install
-#or
+## Requirements
+Node.js >= 10.15.0
+
+npm >= 6.4.1
+## Build
+```sh
 yarn
 ```
+
 Then...It's easy to run a local dev server!
-```
-npm run start
-#or
+```sh
 yarn start
 ```
+
 You could build the application if you had finished the development of current version.
-```
-npm run build
-#or
+```sh
 yarn build
 ```
 Then the application files will build to the `dist` floder.
-# Start your development now!
-Go!Create new code and make your dreams come true!
 
-# Contact
+# Start your development now!
+Go! Write anything you want and create your world now!
+
+# Contact me
 Blog: https://www.zsh2401.top   
 E-Mail: zsh2401@163.com

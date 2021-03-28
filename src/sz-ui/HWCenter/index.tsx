@@ -1,5 +1,5 @@
 import React from 'react'
-import { IStdProps } from '../../common'
+import { IStdProps } from "sz-react-support"
 //@ts-expect-error
 import css from "./index.css"
 export interface Props extends IStdProps {

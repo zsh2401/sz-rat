@@ -1,6 +1,6 @@
 import React from "react"
-import { IStdProps } from "../../../sz-support/common";
-import debugMx from "../../../sz-support/common/debug-mx";
+import { IStdProps } from "sz-react-support";
+import debugMx from "../../../common/debug-mx";
 export default function (props: IStdProps) {
     return <footer className={props.className}>
         There's the footer

@@ -1,20 +1,19 @@
 import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import OfflinePlugin from "offline-plugin"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+import WorkboxPlugin from "workbox-webpack-plugin"
 const config: webpack.Configuration = {
 	entry: {
-		app: path.resolve(__dirname, '../src/AppLoader.ts'),
-		"404": path.resolve(__dirname, '../src/404redirector.ts')
+		app: path.resolve(__dirname, './src/AppLoader.ts'),
+		"404": path.resolve(__dirname, './src/404redirector.ts')
 	},
 
 	output: {
 		filename: 'js/[name].bundle.[hash].js',
 		chunkFilename: 'js/[name].chunk.[hash].js',
-		path: path.resolve(__dirname, '../dist'),
+		path: path.resolve(__dirname, './dist'),
 		publicPath: "/",
 	},
 
@@ -57,7 +56,7 @@ const config: webpack.Configuration = {
 	plugins: [
 		new webpack.ProgressPlugin(),
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, "../src/AppPage.html"),
+			template: path.resolve(__dirname, "./src/AppPage.html"),
 			minify: { // 压缩HTML文件
 				removeComments: true, // 移除HTML中的注释
 				collapseWhitespace: true, // 删除空白符与换行符
@@ -66,7 +65,7 @@ const config: webpack.Configuration = {
 			chunks: ["app"]
 		}),
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, "../src/AppPage.html"),
+			template: path.resolve(__dirname, "./src/AppPage.html"),
 			filename: "404.html",
 			title: "404redictor",
 			minify: { // 压缩HTML文件
@@ -79,34 +78,26 @@ const config: webpack.Configuration = {
 		new CopyWebpackPlugin({
 			patterns: [
 				{
-					from: path.resolve(__dirname, "../public"),
-					to: path.resolve(__dirname, "../dist")
+					from: path.resolve(__dirname, "./public"),
+					to: path.resolve(__dirname, "./dist")
 				}
 			]
 		}),
 		new CleanWebpackPlugin(),
-		
+
 		// new BundleAnalyzerPlugin({
 		// 	analyzerMode:"static"
-		// }),
-		// new OfflinePlugin({
-		// 	caches: "all",
 		// }),
 
 		//https://stackoverflow.com/questions/65018431/webpack-5-uncaught-referenceerror-process-is-not-defined
 		new webpack.ProvidePlugin({
 			process: 'process/browser',
-		})
+		}),
+
+		new WorkboxPlugin.GenerateSW({}),
 	],
 
 	optimization: {
-		// minimizer: [
-		// 	new UglifyJsPlugin({
-		// 		uglifyOptions: {
-		// 			compress: true
-		// 		}
-		// 	})
-		// ],
 		splitChunks: {
 			cacheGroups: {
 				// vendors: {
@@ -127,7 +118,7 @@ const config: webpack.Configuration = {
 
 	//@ts-ignore
 	devServer: {
-		contentBase: path.join(__dirname, '../dist'),
+		contentBase: path.join(__dirname, './dist'),
 		open: false,
 		host: "0.0.0.0",
 		port: 5000,

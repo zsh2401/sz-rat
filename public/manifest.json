@@ -1,14 +1,14 @@
 {
-  "name": "Seymour Zhang's react application",
+  "name": "Seymour Zhang's React Application",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "256x256",
+      "src": "/icon.ico",
+      "sizes": "400x400",
       "type": "image/png"
     }
   ],
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "standalone"
 }
