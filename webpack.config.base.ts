@@ -4,6 +4,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import WorkboxPlugin from "workbox-webpack-plugin"
+
+
 const config: webpack.Configuration = {
 	entry: {
 		app: path.resolve(__dirname, './src/AppLoader.ts'),
@@ -21,15 +23,11 @@ const config: webpack.Configuration = {
 		rules: [
 			{ test: /\.(ts|tsx)?$/, loader: 'ts-loader' },
 
-			{
-				test: /\.(html)$/,
-				loader: "html-loader"
-			},
-
 			// {
-			// 	test: /\.(ejs)$/,
-			// 	loader: "ejs-loader"
+			// 	test: /\.(html)$/,
+			// 	loader: "html-loader",
 			// },
+
 
 			{
 				test: /\.css$/,
