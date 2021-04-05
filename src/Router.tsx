@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import IndexPage from './view/pages/IndexPage';
 import NotFoundPage from './view/pages/NotFoundPage';
@@ -8,7 +8,7 @@ import { createHashHistory } from "history"
 
 export default function AppRouter() {
 
-    const [history] = useState(() => createHashHistory());
+    const history = useMemo(() => createHashHistory(), []);
     const [navbarVisible, setNavbarVisible] = useState(true)
     const [footbarVisible, setFootbarVisible] = useState(true)
 
