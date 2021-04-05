@@ -34,6 +34,9 @@ Make your react web application development easier and faster!
 * Dynamically import   
 * Optimization
 
+# Showcase
+* [Lee Yin's Cat Paw](https://cp.zsh2401.top)
+* [Seymour Zhang's CS Playground](https://playground.zsh2401.top)
 <!-- # Todo🌵
 - [√] 
 - [√] Top Load Progress Bar
