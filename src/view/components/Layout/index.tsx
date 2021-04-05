@@ -4,17 +4,26 @@ import Header from "./Header"
 import Footer from "./Footer"
 //@ts-expect-error
 import css from "./index.css"
+import AppContext, { IAppContext } from '../../../AppContext'
 export default function (props: IStdProps) {
     return <div>
         <div className={css.layout}>
 
-            <Header className={css.header} />
+            <AppContext.Consumer>
+                {(context: IAppContext) =>
+                    <>
+                        {context.navbarVisible && <Header className={css.header} />}
 
-            <div className={css.body}>
-                {props.children}
-            </div>
+                        <div className={css.body}>
+                            {props.children}
+                        </div>
 
-            <Footer className={css.footer} />
+                        {context.footbarVisible && <Footer className={css.footer} />}
+
+                    </>
+                }
+            </AppContext.Consumer>
+
         </div>
     </div>
 }

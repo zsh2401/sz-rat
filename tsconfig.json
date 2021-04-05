@@ -6,15 +6,24 @@
     "moduleResolution": "node",
     "esModuleInterop": false,
     "jsx": "react",
+    "lib": [
+      "ES2015","DOM"
+    ],
     "resolveJsonModule": true,
     "removeComments": true,
     "strictNullChecks": true,
-    "experimentalDecorators":true,
+    "experimentalDecorators": true,
     "strictBindCallApply": true,
     "noImplicitAny": true,
-    "noImplicitReturns":true,
-    "allowSyntheticDefaultImports":true
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/*", "src/app/server.ts", "src/common/debug-mx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src/*",
+    "src/app/server.ts",
+    "src/common/debug-mx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

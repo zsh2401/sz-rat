@@ -1,15 +1,14 @@
-import React, { useContext } from "react"
+import React, { useContext, useState, Dispatch, SetStateAction } from "react"
 import { History, createHashHistory } from 'history'
 export interface IAppContext {
-    history: History
+    navbarVisible: boolean
+    footbarVisible: boolean
+    readonly history: History
 }
-const context: React.Context<IAppContext> =
-    React.createContext<IAppContext>(
-        {
-            history: createHashHistory()
-        }
-    );
-export function useAppContext() {
+//@ts-expect-error
+const context: React.Context<IAppContext> = React.createContext<IAppContext>({});
+
+export function useAppContext(): IAppContext {
     return useContext(context)
 }
 export default context;

@@ -5,18 +5,37 @@ import NotFoundPage from './view/pages/NotFoundPage';
 import Layout from './view/components/Layout';
 import AppContext from "./AppContext"
 import { createHashHistory } from "history"
+
 export default function AppRouter() {
+
     const [history] = useState(() => createHashHistory());
+    const [navbarVisible, setNavbarVisible] = useState(true)
+    const [footbarVisible, setFootbarVisible] = useState(true)
+
     return <AppContext.Provider value={{
-        history
+        history,
+        get footbarVisible(): boolean {
+            return footbarVisible
+        },
+        set footbarVisible(value: boolean) {
+            setFootbarVisible(value)
+        },
+        get navbarVisible(): boolean {
+            return navbarVisible
+        },
+        set navbarVisible(value: boolean) {
+            setNavbarVisible(value)
+        },
     }}>
+
         <Layout>
-            <Router history={useContext(AppContext).history}>
+            <Router history={history}>
                 <Switch>
                     <Route exact path="/" component={IndexPage}></Route>
                     <Route path="*" component={NotFoundPage}></Route>
                 </Switch>
             </Router>
         </Layout>
+
     </AppContext.Provider>
 }

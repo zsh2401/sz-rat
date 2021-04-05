@@ -25,7 +25,7 @@ Make your react web application development easier and faster!
 
 
 # Features✨
-* SPA + PWA Supported  
+* SPA + PWA Supported   
 * 100% TypeScript   
 * Lightest Framework   
 * LodableComponent (based on Dynamic Imports)    
@@ -34,47 +34,45 @@ Make your react web application development easier and faster!
 * Dynamically import   
 * Optimization
 
-# Todo🌵
+<!-- # Todo🌵
 - [√] 
 - [√] Top Load Progress Bar
 - [√] Squeeze the size of vendor to below 200KB    
 - [√] Optimize the package speed    
 <!-- - [ ] Try to add pollify(Removable) -->
-- [ ] Server side render.
+<!-- - [ ] Server side render. -->
 
-# Fx&Libs
+# Fx & Libs
 * React + React Router
 * webpack
 * TypeScript
 * lodash (Removable)
-* ~~Bootstrap4 (Removed)~~
-* ~~jQuery (Removed)~~
 
+# Usage
+**Requirements**
+| Node.js | NPM |
+| ---- | ---- |
+| >= 10.15.0 | >= 6.4.1 |
 
-
-# How to run it?
-## Requirements
-Node.js >= 10.15.0
-
-npm >= 6.4.1
-## Build
+### Get template
+```sh
+git clone https://github.com/zsh2401/sz-rat
+mv sz-rat your-app-name
+cd your-name-app
+```
+### Fetch dependencies
 ```sh
 yarn
 ```
-
-Then...It's easy to run a local dev server!
+### Run dev-server
 ```sh
 yarn start
 ```
-
-You could build the application if you had finished the development of current version.
+You could build the application if you need to release current version.
 ```sh
 yarn build
 ```
-Then the application files will build to the `dist` floder.
-
-# Start your development now!
-Go! Write anything you want and create your world now!
+Then the application bundles will appears under the `dist` floder.
 
 # Contact me
 Blog: https://www.zsh2401.top   

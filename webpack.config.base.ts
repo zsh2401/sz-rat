@@ -1,10 +1,12 @@
 import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import WebpackPwaManifest from "webpack-pwa-manifest"
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import WorkboxPlugin from "workbox-webpack-plugin"
-
+import pkgInfo from "./package.json"
+import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
 
 const config: webpack.Configuration = {
 	entry: {
@@ -22,12 +24,6 @@ const config: webpack.Configuration = {
 	module: {
 		rules: [
 			{ test: /\.(ts|tsx)?$/, loader: 'ts-loader' },
-
-			// {
-			// 	test: /\.(html)$/,
-			// 	loader: "html-loader",
-			// },
-
 
 			{
 				test: /\.css$/,
@@ -52,9 +48,12 @@ const config: webpack.Configuration = {
 	// externals: helper.EXTERNALS,
 
 	plugins: [
+
 		new webpack.ProgressPlugin(),
+
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, "./src/AppPage.html"),
+			favicon: path.resolve(__dirname, "assets/icons/icon.ico"),
 			minify: { // 压缩HTML文件
 				removeComments: true, // 移除HTML中的注释
 				collapseWhitespace: true, // 删除空白符与换行符
@@ -62,8 +61,10 @@ const config: webpack.Configuration = {
 			},
 			chunks: ["app"]
 		}),
+
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, "./src/AppPage.html"),
+			favicon: path.resolve(__dirname, "assets/icons/icon.ico"),
 			filename: "404.html",
 			title: "404redictor",
 			minify: { // 压缩HTML文件
@@ -73,6 +74,7 @@ const config: webpack.Configuration = {
 			},
 			chunks: ["404"]
 		}),
+
 		//@ts-ignore
 		new CopyWebpackPlugin({
 			patterns: [
@@ -82,9 +84,11 @@ const config: webpack.Configuration = {
 				}
 			]
 		}),
+
 		//@ts-ignore
 		new CleanWebpackPlugin(),
 
+		//@ts-ignore
 		// new BundleAnalyzerPlugin({
 		// 	analyzerMode:"static"
 		// }),
@@ -94,29 +98,40 @@ const config: webpack.Configuration = {
 			process: 'process/browser',
 		}),
 
-		new WorkboxPlugin.GenerateSW({}),
+		//@ts-ignore
+		new WebpackPwaManifest({
+			name: pkgInfo.name,
+			short_name: pkgInfo.name,
+			description: pkgInfo.description,
+			background_color: "#ffffff",
+			icons: [
+				{
+					src: path.resolve(__dirname, "assets/icons/icon.png"),
+					destination: "icons/uni",
+					sizes: [96, 128, 192, 256, 384, 512],
+				},
+				{
+					src: path.resolve(__dirname, "assets/icons/apple-icon.png"),
+					destination: "icons/apple",
+					size: 152,
+					ios: true
+				},
+
+			],
+		}),
+
+		new WorkboxPlugin.GenerateSW({ swDest: "js/sw.js" }),
 	],
 
 	optimization: {
 		splitChunks: {
-			cacheGroups: {
-				// vendors: {
-				// 	name:"vendors",
-				// 	priority: -10,
-				// 	chunks:'initial',
-				// 	test: /[\\/]node_modules[\\/]/
-				// },
-			},
-			// name: true,
 			chunks: 'async',
 			minSize: 20000,
 			minRemainingSize: 0,
-			// maxSize: 0,
-			// maxSize: 
 		}
 	},
 
-	//@ts-ignore
+	
 	devServer: {
 		contentBase: path.join(__dirname, './dist'),
 		open: false,
@@ -125,7 +140,7 @@ const config: webpack.Configuration = {
 	},
 
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js', '.css', '.jpg']
+		extensions: ['.tsx', '.ts', '.js', '.css', '.jpg', '.png', '.ico', '.gif', '.json']
 	}
 };
 

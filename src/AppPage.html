@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     </meta>
-    <title>SZ-RAT</title>
-    <meta name="description" content="SZ-RAT">
+    <title>SZ-RAT Application</title>
+    <meta name="description" content="An application powered by SZ-RAT">
 
     <!-- VIEW -->
     <meta name="viewport"
         content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-    </meta>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    </meta>
+
 
     <!-- PWA -->
-    <link rel="manifest" href="/manifest.json">
-    </link>
-
-    <!-- APPLE -->
-    <link rel="apple-touch-icon" sizes="256x256" href="/icon.ico">
-    </link>
+    <link rel="icon" href="/icon.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="mask-icon" href="/icon.svg" color="#3eaf7c">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    </meta>
-    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="msapplication-TileImage" content="/icon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <!-- PWA (Auto generated with WebpackPwaManifest plugin now.) -->
+    <!-- <link rel="manifest" href="/manifest.json"/> -->
+
 </head>
 
 <body>
@@ -30,29 +32,32 @@
         <div class="loading-wrapper">
             <div class="loading-inner">
                 <div class="loading-icon-wrapper"">
-                    <img class="loading-icon" src="/icon.png"></img>
+                    <img class=" loading-icon" src="/icon.png"></img>
                 </div>
                 <h1>Seymour Zhang's React Application</h1>
             </div>
         </div>
 
         <style>
-            .loading-icon-wrapper{
+            .loading-icon-wrapper {
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
             }
-            .loading-icon{
+
+            .loading-icon {
                 max-height: 140px;
                 max-width: 140px;
             }
+
             .loading-wrapper {
                 display: flex;
                 height: 100%;
                 flex-direction: row;
                 justify-content: center;
             }
-            .loading-inner{
+
+            .loading-inner {
                 text-align: center;
                 display: flex;
                 flex-direction: column;

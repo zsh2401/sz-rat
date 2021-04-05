@@ -1,0 +1,16 @@
+.feature-box{
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+.feature-box .feature-name{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+.feature-box .content-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
