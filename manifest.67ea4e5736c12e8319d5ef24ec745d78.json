@@ -1,0 +1,46 @@
+{
+  "icons": [
+    {
+      "src": "/icons/apple/icon_152x152.3e1b10e9d380b5be71352f133c2fd0c9.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/uni/icon_512x512.87bbb6a1a2048cf2f088901871b55daf.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/uni/icon_384x384.142f46cbb03aa4cfa7e20a99188cc320.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/uni/icon_256x256.e790fd2cc630ba77b3456da4eef88cad.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/uni/icon_192x192.c63ae7d8cc563fb0f26ad995a90ed6a2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/uni/icon_128x128.f8e28f16de241745236f92596e76aad3.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/uni/icon_96x96.433de8ba4e8946e5623513d963c72175.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "sz-rat-app",
+  "short_name": "sz-rat-app",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "An application powered by sz-rat",
+  "background_color": "#ffffff"
+}
